@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Permission;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -23,8 +26,27 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
+//        $this->registerPolicies();
 
-        //
+//        $this->registerPolicies();
+//        $permissions = $this->getPermissions();
+//        foreach ($permissions as $permission) {
+//            gate::define($permission->name, function ($user) use ($permission) {
+//                $permissionIdsOfUser = $this->getPermissionIdsOfUser($user);
+//                return in_array($permission->id, $permissionIdsOfUser);
+//            });
+//        }
     }
+//    private function getPermissionIdsOfUser($user)
+//    {
+//            $roleIds = collect(DB::table('role_users')->where('user_id', $user->id)->get())->pluck('role_id')->toArray();
+//            $permissionIdsOfUser = collect(DB::table('permission_roles')->whereIn('role_id', $roleIds)->get())->pluck('permission_id')->toArray();
+//            return $permissionIdsOfUser;
+//    }
+//
+//    private function getPermissions()
+//    {
+//        $permission =  Permission::all();
+//        return $permission;
+//    }
 }
