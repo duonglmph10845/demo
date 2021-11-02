@@ -26,27 +26,41 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        $this->registerPolicies();
+        $this->registerPolicies();
+        $permissions = $this->getPermissions();
+        foreach ($permissions as $permission) {
+            gate::define($permission->name, function ($user) use ($permission) {
 
-//        $this->registerPolicies();
-//        $permissions = $this->getPermissions();
-//        foreach ($permissions as $permission) {
-//            gate::define($permission->name, function ($user) use ($permission) {
-//                $permissionIdsOfUser = $this->getPermissionIdsOfUser($user);
-//                return in_array($permission->id, $permissionIdsOfUser);
-//            });
-//        }
+                $permissionIdsOfUser = $this->getPermissionIdsOfUser($user);
+
+                return in_array($permission->id, $permissionIdsOfUser);
+            });
+        }
     }
-//    private function getPermissionIdsOfUser($user)
-//    {
-//            $roleIds = collect(DB::table('role_users')->where('user_id', $user->id)->get())->pluck('role_id')->toArray();
-//            $permissionIdsOfUser = collect(DB::table('permission_roles')->whereIn('role_id', $roleIds)->get())->pluck('permission_id')->toArray();
-//            return $permissionIdsOfUser;
-//    }
-//
-//    private function getPermissions()
-//    {
-//        $permission =  Permission::all();
-//        return $permission;
-//    }
+    private function getPermissionIdsOfUser($user)
+    {
+        $cachePermissionUser = Cache::get("permissionIdsOfUser$user->id");
+        // dd(Cache::get("permissionIdsOfUser$user->id"));
+
+        if (is_null($cachePermissionUser)) {
+            $roleIds = collect(DB::table('role_users')->where('user_id', $user->id)->get())->pluck('role_id')->toArray();
+            $permissionIdsOfUser = collect(DB::table('permission_roles')->whereIn('role_id', $roleIds)->get())->pluck('permission_id')->toArray();
+            Cache::put("permissionIdsOfUser$user->id",  $permissionIdsOfUser,  $seconds = 3000);
+            return $permissionIdsOfUser;
+        } else {
+
+            return  $cachePermissionUser;
+        }
+    }
+
+    private function getPermissions()
+    {
+        $permission = Cache::get('permissionCache');
+
+        if (is_null($permission)) {
+            $permission =  Permission::all();
+            Cache::put('permissionCache',  $permission, $seconds = 6000);
+        }
+        return $permission;
+    }
 }
