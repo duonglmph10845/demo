@@ -31,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
                 'category' => RoomTyPe::all(),
             ]);
         });
-          
+
     }
 }

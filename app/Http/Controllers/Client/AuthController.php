@@ -51,7 +51,7 @@ class AuthController extends Controller
 
             return back();
         }
-
+        $user = Auth::user();
         return redirect()->route('home');
     }
 
@@ -81,7 +81,7 @@ class AuthController extends Controller
             $newUser->email           = $user->email;
             $newUser->password        = 12345678;
             $newUser->avatar          = $user->avatar;
-            
+
             $newUser->save();
 
 			auth()->login($newUser, true);

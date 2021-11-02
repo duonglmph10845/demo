@@ -19,12 +19,12 @@ use App\Models\Slider;
 Route::get('/admin', function () {
     return view('admin/layout_master/layout_master');
 })->name('admin');
-Route::get('/', function () {
-    $ListSlider = Slider::paginate(10);
-    return view('frontend/layouts/master', [
-        'data' => $ListSlider,
-    ]);
-});
+//Route::get('/', function () {
+//    $ListSlider = Slider::paginate(10);
+//    return view('frontend/layouts/master', [
+//        'data' => $ListSlider,
+//    ]);
+//});
 Route::get('/send-mail', [Tesmail::class, 'Tesmail']);
 Route::get('/admin', function () {
     return view('admin/layout_master/layout_master');
@@ -81,7 +81,7 @@ Route::group([
         Route::post('update/{id}', 'RoomController@update')->name('update');
         Route::post('delete/{id}', 'RoomController@delete')->name('delete');
     });
-    
+
     Route::group([
         'prefix' => 'users',
         'as' => 'users.',
@@ -105,7 +105,7 @@ Route::group([
         Route::post('update/{id}', 'SliderController@update')->name('update');
         Route::post('delete/{id}', 'SliderController@delete')->name('delete');
     });
-    
+
     Route::group([
         'prefix' => 'posts',
         'as' => 'posts.',

@@ -59,19 +59,6 @@ class User extends Authenticatable
         $hashed = bcrypt($value);
         $this->attributes['password'] = $hashed;
     }
-    
-    // check quyền
-    public function checkPermission($key_code)
-    {
-        // lấy tất cả các quyền của user đang login vào hệ thống
-        $roles = Auth::user()->getRoles;
-        foreach ($roles as $role) {
-            $permissions = $role->getPermissions;
-            if ($permissions->contains('key_code', $key_code)) {
-                return true;
-            }
-        }
-        return false;
-        // so sánh giá trị đưa vào của route xem có tồn tại trong những quyền của user không
-    }
+
+
 }
