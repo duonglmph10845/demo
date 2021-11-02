@@ -14,8 +14,11 @@ class Role extends Model
         'code',
     ];
 
-    public function getPermissions()
-    {
-        return $this->belongsToMany(Permission::class, 'permission_role', 'role_id', 'permission_id')->withTimestamps();
+    public function getUser(){
+        return $this->belongsToMany(User::class , 'role_users', 'user_id', 'role_id');
     }
+    public function getPermission(){
+        return $this->belongsToMany(Permission::class,'permission_roles');
+    }
+
 }
