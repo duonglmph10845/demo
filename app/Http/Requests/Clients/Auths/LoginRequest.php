@@ -24,17 +24,18 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|min:6'
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => 'Email đăng nhập không được để trống !',
-            'email.email' => 'Email đăng nhập không hợp lệ !',
-            'password.required' => 'Mật khẩu đăng nhập không được để trống !'
+            'required' => ':attribute không được để trống',
+            'email.email' => 'Sai định dạng email',
+            'email.exitsts' => 'Email không tồn tại',
+            'password.min' => 'Mật khẩu phải phải dài hơn 6 ký tự'
         ];
     }
 }

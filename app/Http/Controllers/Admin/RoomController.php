@@ -6,13 +6,29 @@ use App\Http\Controllers\Controller;
 use App\Models\ImageRoom;
 use App\Models\Room;
 use App\Models\RoomTyPe;
+use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
-    public function index()
+    use StorageImageTrait;
+    public function index(Request $request)
     {
-        $Rooms = Room::paginate(10);
+        $Rooms = null;
+        if($request->has('keyword') == true){
+            $keyword = $request->get('keyword');
+            $Rooms = DB::table('rooms')
+            ->select('rooms.id', 'rooms.name as name_room', 'rooms.introduce', 'rooms.room_type', 'rooms.price', 'rooms.introduce_of_room', 'rooms.status', 'rooms.feature_image_path', 'room_types.name')
+            ->join('room_types', 'rooms.room_type', '=', 'room_types.id')
+            ->where('name', 'LIKE', "%$keyword%")
+            ->paginate(10);
+        } else {
+            $Rooms = DB::table('rooms')
+            ->select('rooms.id', 'rooms.name as name_room', 'rooms.introduce', 'rooms.room_type', 'rooms.price', 'rooms.introduce_of_room', 'rooms.status', 'rooms.feature_image_path', 'room_types.name')
+            ->join('room_types', 'rooms.room_type', '=', 'room_types.id')
+            ->paginate(10);
+        }
         return view('/admin/rooms/index', [
             'data' => $Rooms,
         ]);
@@ -28,23 +44,77 @@ class RoomController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->file('image')->store('profile'));
-        $result = Room::create([
+        $result = [
             'name'=> $request->name,
             'introduce' => $request->introduce,
             'room_type' => $request->room_type,
             'price' => $request->price,
             'introduce_of_room' => $request->introduce_of_room,
-        ]);
-        
+        ];
+
+        $dataUploadFileRoooms = $this->storageImageUpload($request, 'feature_image_path', 'room_images');
+
+        if(!empty($dataUploadFileRoooms)){
+            $result['feature_image_path'] = $dataUploadFileRoooms['file_path'];
+        }
+
+        $rooms = Room::create($result);
+
         if($request->hasFile('image')){
-            foreach ($request->file('image') as $item){
+            foreach ($request->image as $fileItem){
+                $dataUploadFile = $this->storageImageUploadMutiple($fileItem, 'room_images');
                 ImageRoom::create([
-                    'room_id' => $result->id,
-                    'image' => $item,
+                    'room_id' => $rooms->id,
+                    'image' => $dataUploadFile['file_path'],
                 ]);
             }
         }
-        return redirect()->route('admin.categories.index');
+
+        return redirect()->route('admin.rooms.index');
+    }
+
+    // public function edit($id)
+    // {
+    //     $data = Room::find($id);
+    //     $room_types = RoomTyPe::all();
+    //     $imageRooms = DB::table('image_rooms')->where('room_id', $id)->get();
+    //     return view('admin/rooms/edit', compact('data', 'room_types', 'imageRooms'));
+    // }
+
+    // public function update($id, Request $request)
+    // {
+    //     $result = [
+    //         'name'=> $request->name,
+    //         'introduce' => $request->introduce,
+    //         'room_type' => $request->room_type,
+    //         'price' => $request->price,
+    //         'introduce_of_room' => $request->introduce_of_room,
+    //     ];
+
+    //     $dataUploadFileRoooms = $this->storageImageUpload($request, 'feature_image_path', 'rooms');
+
+    //     if(!empty($dataUploadFileRoooms)){
+    //         $result['feature_image_path'] = $dataUploadFileRoooms['file_path'];
+    //     }
+    //     $rooms = Room::find($id);
+    //     $rooms->update($result);
+
+    //     if($request->hasFile('image')){
+    //         foreach ($request->image as $fileItem){
+    //             $dataUploadFile = $this->storageImageUploadMutiple($fileItem, 'rooms');
+    //             ImageRoom::update([
+    //                 'room_id' => $rooms->id,
+    //                 'image' => $dataUploadFile['file_path'],
+    //             ]);
+    //         }
+    //     }
+
+    //     return redirect()->route('admin.rooms.index');
+    // }
+    public function delete($id)
+    {
+        $rooms = Room::find($id);
+        $rooms->delete();
+        return redirect()->route('admin.rooms.index');
     }
 }

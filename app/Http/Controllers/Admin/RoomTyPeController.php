@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 
 class RoomTyPeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $Room_types = RoomTyPe::paginate(10);
+        $Room_types = null;
+        if($request->has('keyword') == true){
+            $keyword = $request->get('keyword');
+            $Room_types = RoomTyPe::where('name', 'LIKE' , "%$keyword%")->paginate(10);
+        } else {
+            $Room_types = RoomTyPe::paginate(10);
+        }
         return view('/admin/categories/index', [
             'data' => $Room_types,
         ]);
@@ -36,15 +42,15 @@ class RoomTyPeController extends Controller
     public function update($id)
     {
         $data = request()->except('_token');
-        $user = RoomTyPe::find($id);
-        $user->update($data);
+        $Room_types = RoomTyPe::find($id);
+        $Room_types->update($data);
 
         return redirect()->route('admin.categories.index');
     }
     public function delete($id)
     {
-        $user = RoomTyPe::find($id);
-        $user->delete();
+        $Room_types = RoomTyPe::find($id);
+        $Room_types->delete();
         return redirect()->route('admin.categories.index');
     }
 }

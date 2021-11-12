@@ -19,11 +19,8 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'first_name',
-        'middle_name',
-        'last_name',
+        'full_name',
         'avatar',
-        'username',
         'email',
         'password',
         'address',
@@ -49,6 +46,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
     public function getRoles()
     {
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id')->withTimestamps();
@@ -60,18 +58,4 @@ class User extends Authenticatable
         $this->attributes['password'] = $hashed;
     }
     
-    // check quyền
-    public function checkPermission($key_code)
-    {
-        // lấy tất cả các quyền của user đang login vào hệ thống
-        $roles = Auth::user()->getRoles;
-        foreach ($roles as $role) {
-            $permissions = $role->getPermissions;
-            if ($permissions->contains('key_code', $key_code)) {
-                return true;
-            }
-        }
-        return false;
-        // so sánh giá trị đưa vào của route xem có tồn tại trong những quyền của user không
-    }
 }

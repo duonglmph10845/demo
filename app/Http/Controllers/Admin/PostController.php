@@ -15,6 +15,6 @@ class PostController extends Controller
         ]);
     }
     public function create(){
-        return view('adminposts.create');
+        return view('admin.posts.create');
     }
 }

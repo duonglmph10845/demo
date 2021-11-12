@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoomTyPeController;
+use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Client\AuthController;
 use App\Models\Slider;
 
@@ -19,6 +20,12 @@ use App\Models\Slider;
 Route::get('/admin', function () {
     return view('admin/layout_master/layout_master');
 })->name('admin');
+Route::get('/profile', function () {
+    return view('user.profile.index');
+})->name('user.profile.index');
+Route::get('/profile_ss', function () {
+    return view('user.profile.edit');
+})->name('user.profile.edit');
 Route::get('/', function () {
     $ListSlider = Slider::paginate(10);
     return view('frontend/layouts/master', [
@@ -36,6 +43,10 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/detail', function(){
+    return view('frontend/layouts/detail');
+});
+//auth
 Route::get('/redirect', 'Client\AuthController@redirectToProvider')->name("login.provider");
 Route::get('/google/callback', 'Client\AuthController@handleProviderCallback');
 
@@ -45,14 +56,22 @@ Route::post('/register', 'Client\AuthController@registerPost')->name('register.f
 Route::get('/login', 'Client\AuthController@login')->name('auth.getLoginForm');
 Route::post('/login', 'Client\AuthController@loginPost')->name('login.form');
 
+Route::get('/logout', 'Client\AuthController@logout')->name('auth.logout');
+//endauth
+
+//clien
 Route::get('/about', 'Client\AboutController@index')->name('about');
 Route::get('/contact', 'Client\ContactController@index')->name('contact');
 Route::get('/single', 'Client\SingleController@index')->name('single');
+
+Route::get('/room_type/{id}', 'Client\HomeController@room_types')->name('room_type');
+//endclien
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+//admin
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',

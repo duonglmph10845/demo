@@ -16,7 +16,8 @@ class Room extends Model
         'room_type',
         'price',
         'introduce_of_room',
-        'status'
+        'status',
+        'feature_image_path'
         
     ];
     public function imageRoom(){

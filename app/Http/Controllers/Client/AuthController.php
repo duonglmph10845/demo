@@ -21,11 +21,11 @@ class AuthController extends Controller
     {
         $data = request()->except('_token');
         $result = User::create([
-            'username' => $request->username,
-            'avatar' => $request->username,
+            'full_name' => $request->full_name,
+            'avatar' => $request->full_name,
             'email' => $request->email,
             'password' => $request->password,
-            'api_token' => Str::random(60),
+            'api_token' => Str::random(20),
         ]);
         return redirect()->route('home')->with('success', 'Đăng ký thành công');
     }
@@ -77,7 +77,7 @@ class AuthController extends Controller
         } else {
             // create a new user
             $newUser                  = new User;
-            $newUser->username        = $user->name;
+            $newUser->full_name        = $user->name;
             $newUser->email           = $user->email;
             $newUser->password        = 12345678;
             $newUser->avatar          = $user->avatar;

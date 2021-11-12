@@ -11,32 +11,43 @@
 <body>
     @extends('admin/layout_master/layout_master')
     @section('contents')
-    <table  class="table table-striped mt-4">
-        <thead class="table-dark">
+    <div class="container">
+        <form action="{{ route('admin.rooms.index') }}" method="GET" class="row">
+            <div class="col-md-12" style="margin-left: 300px;">
+                <input class="form-control col-md-6 d-inline" style="margin-left: 20px;" type="text" name="keyword" value="{{ old('keyword') }}" />
+                <button class="btn btn-primary col-2">Tìm kiếm</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered table-hover mt-4 rounded">
+        <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
             <tr>
                 <td>Id</td>
                 <td>Name</td>
+                <td>introduce</td>
                 <td>Image</td>
                 <td>Price</td>
-                <td>
-                    Quantity
-                </td>
+                <td>introduce_of_room</td>
+                <td>Status</td>
                 <td>Loại hàng</td>
-                <td><a href="{{ route('admin.rooms.create') }}">
-                        Thêm mới</a></td>
+                <td>
+                    <a href="{{ route('admin.rooms.create') }}">Thêm mới</a>
+                </td>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $item)
             <tr>
                 <td>{{ $item->id }}</td>
-                <td>{{ $item->name_products }}</td>
-                <td><img src="{{ $item->image }}" alt="" width="100px" height="100px"></td>
+                <td>{{ $item->name_room }}</td>
+                <td>{{ $item->introduce }}</td>
+                <td><img src="{{ config('app.base_url') . $item->feature_image_path	 }}" alt="" width="100px" height="100px"></td>
                 <td>{{ $item->price }}</td>
-                <td>{{ $item->quantity }}</td>
+                <td>{{ $item->introduce_of_room }}</td>
+                <td>{{ $item->status }}</td>
                 <td>{{ $item->name }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ route('admin.rooms.edit', [ 'product' => $item->id ])}}">Update</a>
+                    <a class="btn btn-primary" href="{{ route('admin.rooms.edit', [ 'id' => $item->id ])}}">Update</a>
                 </td>
                 <td>
                     <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Delete</button>
@@ -54,7 +65,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <form action="{{ route('admin.products.delete', [ 'product' => $item->id ])}}" method="POST">
+                                    <form action="{{ route('admin.rooms.delete', [ 'id' => $item->id ])}}" method="POST">
                                         @csrf
                                         <button tybe="submit" class="btn btn-danger">Xóa</button>
                                     </form>
@@ -69,6 +80,7 @@
     </table>
     {{$data->links()}}
     @endsection
+    
 </body>
 
 </html>

@@ -7,7 +7,6 @@
 </head>
 
 <body>
-    <a href="{{ route('admin') }}"><h1>admin</h1></a>
     @include('frontend.layouts.header')
     <!-- About Start -->
     <div class="about">

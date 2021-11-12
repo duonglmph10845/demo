@@ -8,7 +8,11 @@
     </div>
     <div class="form-group">
         <label for="">Image</label>
-        <input type="file" name="image" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <input type="file" name="feature_image_path" id="" placeholder="" aria-describedby="helpId">
+    </div>
+    <div class="form-group">
+        <label for="">Room Images</label>
+        <input type="file" multiple name="image[]" id="" placeholder="" aria-describedby="helpId">
     </div>
     <div class="form-group">
         <label for="">Price</label>

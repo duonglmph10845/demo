@@ -7,20 +7,15 @@
 </head>
 
 <body>
-    <a href="{{ route('admin') }}">
-        <h1>admin</h1>
-    </a>
-    <a href="{{ route('auth.getLoginForm') }}"><h1>Đăng nhập</h1></a>
-    <a href="{{ route('auth.getRegisterForm') }}"><h2>Đăng ký</h2></a>
     @include('frontend.layouts.header')
     <!-- Carousel Start -->
     <div class="carousel">
         <div class="">
             <div class="owl-carousel">
+                @foreach ($data as $item)
                 <div class="carousel-item">
-                    @foreach ($data as $item)
                     <div class="carousel-img">
-                        <img src="{{ $item->image }}" alt="Image">
+                        <img src="{{ $item->image }}" height="300px" alt="Image">
                     </div>
                     <div class="carousel-text">
                         <h3>Booking Homestay</h3>
@@ -31,9 +26,8 @@
                         </p> -->
                         <a class="btn btn-custom" href="">Tìm hiểu thêm</a>
                     </div>
-                    @endforeach
                 </div>
-
+                @endforeach
             </div>
         </div>
     </div>
@@ -46,7 +40,7 @@
             <div data-aos="fade-down" class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-img">
-                        <img src="img/baner tc.jpg" alt="Image">
+                        <img src="{{ asset('frontend_assets/img/baner tc.jpg') }}" alt="Image">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -89,11 +83,6 @@
                         </div>
                         <div class="team-text">
                             <h2 class="textct">{{ $item->name }}</h2>
-                            <p>
-                                <span class="title-price">từ</span>
-                                <span class="price-value">3.850.000₫</span>
-                                <span class="title-price">Đêm</span>
-                            </p>
                             <div class="button-link button-xs"><a href="blog.html">xem chi tiết <i class="fas fa-long-arrow-alt-right"></i></a>
 
                             </div>
@@ -118,7 +107,7 @@
                 <div class="col-lg-4">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/bbq tc.jpg" alt="Image">
+                            <img src="{{ asset('frontend_assets/img/bbq tc.jpg') }}" alt="Image">
 
                         </div>
                         <div class="blog-text">
@@ -133,7 +122,7 @@
                 <div class="col-lg-4">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/cheothuyen tc.jpg" alt="Image">
+                            <img src="{{ asset('frontend_assets/img/cheothuyen tc.jpg') }}" alt="Image">
 
                         </div>
                         <div class="blog-text">
@@ -147,7 +136,7 @@
                 <div class="col-lg-4">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/thamquan tc.jpg" alt="Image">
+                            <img src="{{ asset('frontend_assets/img/thamquan tc.jpg') }}" alt="Image">
 
                         </div>
                         <div class="blog-text">
@@ -247,25 +236,25 @@
                                     <div class="content">
                                         <div class="slider-content">
                                             <figure class="shadow">
-                                                <img src="img/beboi1.jpg">
+                                                <img src="{{ asset('frontend_assets/img/beboi1.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/beboi2.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/beboi2.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/beboi3.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/beboi3.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/beboi4.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/beboi4.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/beboi5.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/beboi5.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/ct1.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct1.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/ct2.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct2.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/ct3.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct3.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/ct4.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct4.jpg') }}">
                                             </figure>
-                                            <figure class="shadow"><img src="img/ct5.jpg">
+                                            <figure class="shadow"><img src="{{ asset('frontend_assets/img/ct5.jpg') }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -305,7 +294,7 @@
                     <div class="price-item featured-item">
 
                         <div class="price-body">
-                            <img style="width: 100%" src="./img/6.jpg" alt="">
+                            <img style="width: 100%" src="{{ asset('frontend_assets/./img/6.jpg') }}" alt="">
 
                         </div>
 

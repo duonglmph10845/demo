@@ -8,9 +8,15 @@ use Illuminate\Http\Request;
 
 class SliderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ListSlider = Slider::paginate(10);
+        $ListSlider = null;
+        if($request->has('keyword') == true){
+            $keyword = $request->get('keyword');
+            $ListSlider = Slider::where('name', 'LIKE', "%$keyword%")->paginate(10);
+        } else {
+            $ListSlider = Slider::paginate(10);
+        }
         return view('/admin/sliders/index', [
             'data' => $ListSlider,
         ]);

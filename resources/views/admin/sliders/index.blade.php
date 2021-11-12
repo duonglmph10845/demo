@@ -11,26 +11,32 @@
 <body>
     @extends('admin/layout_master/layout_master')
     @section('contents')
-    <table class="table table-striped">
-        <thead class="table-dark">
+    <div class="container">
+        <form action="{{ route('admin.sliders.index') }}" method="GET" class="row">
+            <div class="col-md-12" style="margin-left: 300px;">
+                <input class="form-control col-md-6 d-inline" style="margin-left: 20px;" type="text" name="keyword" value="{{ old('keyword') }}" />
+                <button class="btn btn-primary col-2">Tìm kiếm</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered table-hover mt-4 rounded" >
+        <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
             <tr>
                 <td>Id</td>
-                <td>Image</td>
-                <td>Conten</td>
-                <td><a href="{{ route('admin.sliders.create') }}">
+                <td style="text-align: center;">Image</td>
+                <td style="text-align: center;">Conten</td>
+                <td style="text-align: center;"><a href="{{ route('admin.sliders.create') }}">
                         Thêm mới</a></td>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $item)
             <tr>
-                <td>{{ $item->id }}</td>
-                <td><img src="{{ $item->image }}" alt="" width="100px" height="100px"></td>
-                <td>{{ $item->content }}</td>
-                <td>
+                <td style="text-align: center;">{{ $item->id }}</td>
+                <td style="text-align: center;"><img src="{{ $item->image }}" alt="" width="100px" height="100px"></td>
+                <td style="text-align: center;">{{ $item->content }}</td>
+                <td style="text-align: center;">
                     <a class="btn btn-primary" href="{{ route('admin.sliders.edit', [ 'id' => $item->id ])}}">Update</a>
-                </td>
-                <td>
                     <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Delete</button>
                     <div class="modal fade" id="confirm_delete_{{ $item->id }}" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">

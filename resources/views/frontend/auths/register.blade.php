@@ -30,9 +30,9 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Full Name</label>
-                                <input type="text" class="form-control" name="username" placeholder="John Doe">
+                                <input type="text" class="form-control" name="full_name" placeholder="John Doe">
                                 <span class="icon fa fa-user-o"></span>
-                                @error('username')
+                                @error('full_name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

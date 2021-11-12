@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|max:255',
+            'full_name' => 'required|max:255',
             'password' => 'required|min:6|max:255|confirmed',
             'email' => 'required|email:rfc,dns|unique:users',
         ];
@@ -32,8 +32,8 @@ class StoreRequest extends FormRequest
     function messages()
     {
         return [
-            'username.required' => 'Họ tên không được để trống !',
-            'username.max' => 'Họ tên không được vượt quá 255 kí tự',
+            'full_name.required' => 'Họ tên không được để trống !',
+            'full_name.max' => 'Họ tên không được vượt quá 255 kí tự',
             'password.required' => 'Mật khẩu không được để trống !',
             'password.max' => 'Mật khẩu không được vượt quá 255 kí tự!',
             'password.min' => 'Mật khẩu có ít nhất 6 kí tự !',
