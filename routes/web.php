@@ -44,7 +44,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/detail', function(){
-    return view('frontend/layouts/detail');
+    return view('frontend/layouts/room_detail');
 });
 //auth
 Route::get('/redirect', 'Client\AuthController@redirectToProvider')->name("login.provider");
@@ -65,6 +65,8 @@ Route::get('/contact', 'Client\ContactController@index')->name('contact');
 Route::get('/single', 'Client\SingleController@index')->name('single');
 
 Route::get('/room_type/{id}', 'Client\HomeController@room_types')->name('room_type');
+Route::get('/room_detail/{id}', 'Client\HomeController@room_detail')->name('room_detail');
+Route::post('/add_comment/{id}', 'Client\HomeController@comment')->name('add_comment');
 //endclien
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware'], function () {

@@ -1,78 +1,76 @@
 <!doctype html>
-<html lang="vi" class="no-js">
+<html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="//gmpg.org/xfn/11">
-	<title>An Vui Lodge Bungalow &#8211; An Vui Homestay</title>
-	<meta name='robots' content='max-image-preview:large' />
-	
-	<script type="text/javascript">
-		window._wpemojiSettings = {
-			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/",
-			"ext": ".png",
-			"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/",
-			"svgExt": ".svg",
-			"source": {
-				"concatemoji": "https:\/\/anvuihomestay.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.1"
-			}
-		};
-		! function(e, a, t) {
-			var n, r, o, i = a.createElement("canvas"),
-				p = i.getContext && i.getContext("2d");
+	<title>Document</title>
+	@include('frontend.layouts.head')
 
-			function s(e, t) {
-				var a = String.fromCharCode;
-				p.clearRect(0, 0, i.width, i.height), p.fillText(a.apply(this, e), 0, 0);
-				e = i.toDataURL();
-				return p.clearRect(0, 0, i.width, i.height), p.fillText(a.apply(this, t), 0, 0), e === i.toDataURL()
-			}
+	<style>
+		.form_group {
+			top: 100px;
+			position: sticky;
+			margin-top: 2.5rem;
+			background-color: rgba(0, 120, 10, 0.2);
+			padding: 40px 40px 40px 50px;
+			border-radius: 8px;
+			box-shadow: 0px 15px 30px rgba(62, 86, 238, 0.15);
+		}
 
-			function c(e) {
-				var t = a.createElement("script");
-				t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
-			}
-			for (o = Array("flag", "emoji"), t.supports = {
-					everything: !0,
-					everythingExceptFlag: !0
-				}, r = 0; r < o.length; r++) t.supports[o[r]] = function(e) {
-				if (!p || !p.fillText) return !1;
-				switch (p.textBaseline = "top", p.font = "600 32px Arial", e) {
-					case "flag":
-						return s([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) ? !1 : !s([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !s([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]);
-					case "emoji":
-						return !s([10084, 65039, 8205, 55357, 56613], [10084, 65039, 8203, 55357, 56613])
-				}
-				return !1
-			}(o[r]), t.supports.everything = t.supports.everything && t.supports[o[r]], "flag" !== o[r] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[o[r]]);
-			t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function() {
-				t.DOMReady = !0
-			}, t.supports.everything || (n = function() {
-				t.readyCallback()
-			}, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function() {
-				"complete" === a.readyState && t.readyCallback()
-			})), (n = t.source || {}).concatemoji ? c(n.concatemoji) : n.wpemoji && n.twemoji && (c(n.twemoji), c(n.wpemoji)))
-		}(window, document, window._wpemojiSettings);
-	</script>
-	<style type="text/css">
-		img.wp-smiley,
-		img.emoji {
-			display: inline !important;
-			border: none !important;
-			box-shadow: none !important;
-			height: 1em !important;
-			width: 1em !important;
-			margin: 0 .07em !important;
-			vertical-align: -0.1em !important;
-			background: none !important;
-			padding: 0 !important;
+		.form-control {
+			border-radius: 36px;
+			padding: 25px;
+		}
+
+		.form-control:hover {
+			border: 1px solid rgb(0, 255, 106);
+		}
+
+		.form-control.text:focus {
+			background: rgb(217, 255, 0);
+		}
+
+		/* .form-control-select {
+        padding: 25px;
+     } */
+		.form-label {
+			color: #182135;
+			font-weight: 400;
+		}
+
+		.submit-btn {
+			width: 100%;
+			background-color: orange;
+			border-radius: 2rem;
+			padding: 10px;
+			color: white;
+			font-weight: 600;
+			border: none;
+		}
+
+		.submit-btn:hover {
+			background-color: rgba(0, 255, 64, 0.5);
+		}
+
+		.nav-tabs .nav-link {
+			margin-right: 16px;
+			padding: 8px 0px;
+			background-color: white;
+		}
+
+		.nav-tabs .nav-item.show .nav-link,
+		.nav-tabs .nav-link.active {
+			border: none;
+			border-bottom: 5px solid rgba(131, 64, 2, 0.979) !important;
+		}
+
+		.nav-link:hover {
+			border: none;
 		}
 	</style>
-	<link rel='stylesheet' id='lexus-boostrap-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/css/opal-boostrap.css?ver=5.8.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='lexus-boostrap-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/css/opal-boostrap.css?ver=5.8.2' type='text/css' media='all' />
 	<link rel='stylesheet' id='wp-hotel-booking-css' href='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/assets/css/hotel-booking.min.css?ver=1.10.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='elementor-frontend-css' href='https://anvuihomestay.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.2.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='amihomestay-style-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/style.css?ver=5.8.1' type='text/css' media='all' />
+	
+	<link rel='stylesheet' id='amihomestay-style-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/style.css?ver=5.8.2' type='text/css' media='all' />
 	<style id='amihomestay-style-inline-css' type='text/css'>
 		body,
 		input,
@@ -1326,6 +1324,14 @@
 			}
 		}
 
+		.page-title-bar {
+			background-color: #c3c9cb;
+			background-image: url(https://anvuihomestay.com/wp-content/uploads/2021/04/bg-header.jpg);
+			background-repeat: no-repeat;
+			background-position: center center;
+			;
+		}
+
 		.breadcrumb,
 		.breadcrumb span,
 		.breadcrumb * {
@@ -1684,6 +1690,13 @@
 			color: #fff;
 		}
 
+		button,
+		input[type="submit"],
+		input[type="reset"],
+		input[type="button"],
+		.button,
+		.btn {}
+
 		.elementor-button[class*='elementor-size-'] {
 			border-radius: 5px;
 		}
@@ -1691,18 +1704,20 @@
 	<link rel='stylesheet' id='osf-elementor-addons-css' href='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/css/elementor/style.css?ver=1.0.5' type='text/css' media='all' />
 	<link rel='stylesheet' id='tooltipster-css' href='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/css/tooltipster.bundle.min.css?ver=1.0.5' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-post-35-css' href='https://anvuihomestay.com/wp-content/uploads/elementor/css/post-35.css?ver=1619949717' type='text/css' media='all' />
-	<link rel='stylesheet' id='magnific-popup-css' href='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/css/magnific-popup.css?ver=5.8.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='magnific-popup-css' href='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/css/magnific-popup.css?ver=5.8.2' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-post-36-css' href='https://anvuihomestay.com/wp-content/uploads/elementor/css/post-36.css?ver=1619949718' type='text/css' media='all' />
-	<link rel='stylesheet' id='wp-block-library-css' href='https://anvuihomestay.com/wp-includes/css/dist/block-library/style.min.css?ver=5.8.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='wp-block-library-css' href='https://anvuihomestay.com/wp-includes/css/dist/block-library/style.min.css?ver=5.8.2' type='text/css' media='all' />
 	<link rel='stylesheet' id='contact-form-7-css' href='https://anvuihomestay.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.4' type='text/css' media='all' />
 	<link rel='stylesheet' id='rs-plugin-settings-css' href='https://anvuihomestay.com/wp-content/plugins/revslider/public/assets/css/rs6.css?ver=6.4.6' type='text/css' media='all' />
-
+	<style id='rs-plugin-settings-inline-css' type='text/css'>
+		#rs-demo-id {}
+	</style>
 	<link rel='stylesheet' id='wphb-extra-css-css' href='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/includes/plugins/wp-hotel-booking-extra/assets/css/site.css?ver=1.10.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='wp-hotel-booking-libaries-style-css' href='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/assets/css/libraries.css?ver=5.8.1' type='text/css' media='all' />
-	<link rel='stylesheet' id='amihomestay-opal-icon-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/css/opal-icons.css?ver=5.8.1' type='text/css' media='all' />
-	<link rel='stylesheet' id='amihomestay-carousel-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/css/carousel.css?ver=5.8.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='wp-hotel-booking-libaries-style-css' href='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/assets/css/libraries.css?ver=5.8.2' type='text/css' media='all' />
+	<link rel='stylesheet' id='amihomestay-opal-icon-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/css/opal-icons.css?ver=5.8.2' type='text/css' media='all' />
+	<link rel='stylesheet' id='amihomestay-carousel-css' href='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/css/carousel.css?ver=5.8.2' type='text/css' media='all' />
 	<link rel='stylesheet' id='otf-fonts-css' href='https://fonts.googleapis.com/css?family=Ubuntu%3A400%7CQuicksand%3A400%7CUbuntu%3A700%7CQuicksand%3A400&#038;subset=greek%2Cvietnamese%2Cgreek%2Cvietnamese' type='text/css' media='all' />
-	<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Ubuntu%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;subset=vietnamese&#038;ver=5.8.1' type='text/css' media='all' />
+	<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Ubuntu%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;subset=vietnamese&#038;ver=5.8.2' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://anvuihomestay.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.1' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://anvuihomestay.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.1' type='text/css' media='all' />
 	<script type="text/javascript">
@@ -1715,8 +1730,8 @@
 			meta_key: {
 				prefix: '_hb_'
 			},
-			nonce: 'e8dcd62e4c',
-			timezone: '1636574843',
+			nonce: '39fcb097d8',
+			timezone: '1636708424',
 			min_booking_date: 1
 		}
 	</script>
@@ -1730,8 +1745,8 @@
 			meta_key: {
 				prefix: '_hb_'
 			},
-			nonce: 'e8dcd62e4c',
-			timezone: '1636574843',
+			nonce: '39fcb097d8',
+			timezone: '1636708424',
 			min_booking_date: 1
 		}
 	</script>
@@ -1750,7 +1765,7 @@
 		};
 		/* ]]> */
 	</script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/wp-util.min.js?ver=5.8.1' id='wp-util-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/wp-util.min.js?ver=5.8.2' id='wp-util-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/jquery/ui/core.min.js?ver=1.12.1' id='jquery-ui-core-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.12.1' id='jquery-ui-mouse-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/jquery/ui/sortable.min.js?ver=1.12.1' id='jquery-ui-sortable-js'></script>
@@ -1773,19 +1788,19 @@
 			});
 		});
 	</script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/includes/libraries/owl-carousel/owl.carousel.min.js?ver=5.8.1' id='wp-hotel-booking-owl-carousel-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/includes/libraries/camera/js/gallery.min.js?ver=5.8.1' id='wp-hotel-booking-gallery-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/assets/js/select2.min.js?ver=5.8.1' id='wp-admin-hotel-booking-select2-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/includes/libraries/owl-carousel/owl.carousel.min.js?ver=5.8.2' id='wp-hotel-booking-owl-carousel-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/includes/libraries/camera/js/gallery.min.js?ver=5.8.2' id='wp-hotel-booking-gallery-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/wp-hotel-booking/assets/js/select2.min.js?ver=5.8.2' id='wp-admin-hotel-booking-select2-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/js/libs/owl.carousel.js?ver=2.2.1' id='owl-carousel-js'></script>
 	<!--[if lt IE 9]>
 <script type='text/javascript' src='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/js/libs/html5.js?ver=3.7.3' id='html5-js'></script>
 <![endif]-->
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/carousel.js?ver=5.8.1' id='otf-carousel-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/carousel.js?ver=5.8.2' id='otf-carousel-js'></script>
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://anvuihomestay.com/xmlrpc.php?rsd" />
 	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://anvuihomestay.com/wp-includes/wlwmanifest.xml" />
-	<meta name="generator" content="WordPress 5.8.1" />
-	<link rel="canonical" href="https://anvuihomestay.com/rooms/an-vui-lodge-bungalow/" />
-	<link rel='shortlink' href='https://anvuihomestay.com/?p=1592' />
+	<meta name="generator" content="WordPress 5.8.2" />
+	<link rel="canonical" href="https://anvuihomestay.com/rooms/an-vui-lodge-villa-14/" />
+	<link rel='shortlink' href='https://anvuihomestay.com/?p=1606' />
 	<style type="text/css">
 		.recentcomments a {
 			display: inline !important;
@@ -1863,56 +1878,46 @@
 	</script>
 </head>
 
-<body data-rsssl=1 class="hb_room-template-default postid-1592 custom-background wp-custom-logo wp-hotel-booking wp-hotel-booking-room-page opal-style opal-single-post-style chrome platform-linux opal-default-content-layout-2cr opal-layout-boxed opal-page-title-right-left opal-footer-skin-light opal-has-menu-top elementor-default elementor-kit-1527">
-
+<body data-rsssl=1 class="hb_room-template-default postid-1606 custom-background wp-custom-logo wp-hotel-booking wp-hotel-booking-room-page opal-style opal-single-post-style chrome platform-windows opal-default-content-layout-2cr opal-layout-boxed opal-page-title-right-left opal-footer-skin-light opal-has-menu-top elementor-default elementor-kit-1527">
 	<div id="wptime-plugin-preloader"></div>
 	<div class="opal-wrapper">
 		<div id="page" class="site">
-			<header id="masthead" class="site-header">
-				<div class="site-header">
-					<div data-elementor-type="wp-post" data-elementor-id="35" class="elementor elementor-35" data-elementor-settings="[]">
 
-					</div>
-				</div>
-			</header>
-
+			@include('frontend.layouts.header')
 			<div class="site-content-contain">
 				<div id="content" class="site-content">
 					<div class="wrap">
 						<div id="primary" class="content-area">
 							<main id="main" class="site-main">
-								<div id="room-1592" class="hb_single_room post-1592 hb_room type-hb_room status-publish has-post-thumbnail hentry">
+								<div id="room-1606" class="hb_single_room post-1606 hb_room type-hb_room status-publish has-post-thumbnail hentry">
 									<div class="summary entry-summary">
 										<div class="title">
 											<h3 class="entry-title">
-												<a href="https://anvuihomestay.com/rooms/an-vui-lodge-bungalow/">An Vui Lodge Bungalow</a>
+												<a href="https://anvuihomestay.com/rooms/an-vui-lodge-villa-14/">An Vui Lodge Villa 14</a>
 											</h3>
 										</div>
 										<div class="price">
 											<span class="title-price">Từ</span>
-											<span class="price_value price_min 1">660.000&#8363;</span>
+											<span class="price_value price_min 1">3.850.000&#8363;</span>
 											<span class="unit">Đêm</span>
 										</div>
-										<div class="hb_room_gallery camera_wrap camera_emboss" id="camera_wrap_1592">
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/24ttmB8_hRLvEF5Y_jW1m1z2-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/24ttmB8_hRLvEF5Y_jW1m1z2-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_44_1557127779-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_44_1557127779-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_45_1557127779-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_45_1557127779-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_46_1557127780-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_46_1557127780-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_47_1557127780-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_47_1557127780-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_48_1557127781-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_48_1557127781-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_49_1557127781-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_49_1557127781-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_50_1557127782-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_50_1557127782-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_51_1557127783-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_51_1557127783-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_52_1557127783-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_52_1557127783-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_53_1557127784-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_53_1557127784-1000x667.jpg"></div>
-											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_54_1557127785-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/room_24496_54_1557127785-1000x667.jpg"></div>
+										<div class="hb_room_gallery camera_wrap camera_emboss" id="camera_wrap_1606">
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7872-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7872-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7874-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7874-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7876-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7876-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7885-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7885-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7886-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7886-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7888-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7888-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7892-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7892-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7896-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7896-1000x667.jpg"></div>
+											<div data-thumb="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7913-150x150.jpg" data-src="https://anvuihomestay.com/wp-content/uploads/2021/04/IMG_7913-1000x667.jpg"></div>
 										</div>
 										<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 										<script type="text/javascript">
 											(function($) {
 												"use strict";
 												$(document).ready(function() {
-													$('#camera_wrap_1592').camera({
+													$('#camera_wrap_1606').camera({
 														height: '470px',
 														loader: 'none',
 														pagination: false,
@@ -1942,10 +1947,10 @@
 											</ul>
 											<div class="hb_single_room_tabs_content">
 												<div id="hb_room_description" class="hb_single_room_tab_details">
-													<p>Công suất 3 người lớn</p>
-													<p>Nhà vệ sinh chung (gồm 2 tắm + 2 wc)</p>
-													<p>Điều hòa, quạt. Minibar</p>
-													<p>Giá treo đồ, khăn tắm, khăn mặt, đồ toiletteries, nhà hàng</p>
+													<p>Công suất: 14 người lớn</p>
+													<p>2 phòng triple (1 giường đôi và 1 giường đơn); 1 phòng dorm (4 giường tầng – 8 người), 3 nhà vệ sinh</p>
+													<p>smarttv, wifi dung lượng cao, bếp từ, tủ lạnh, đồ dùng</p>
+													<p>Tiện ích: khăn tắm, khăn mặt, đồ toilletries, bể bơi, bếp bbq ngoài trời, sân chơi trẻ em, hố đốt lửa trại sau nhà.</p>
 												</div>
 												<div id="hb_room_additinal" class="hb_single_room_tab_details">
 												</div>
@@ -1959,7 +1964,7 @@
 														<div id="review_form_wrapper">
 															<div id="review_form">
 																<div id="respond" class="comment-respond">
-																	<h3 id="reply-title" class="comment-reply-title">Be the first to review &ldquo;An Vui Lodge Bungalow&rdquo; <small><a rel="nofollow" id="cancel-comment-reply-link" href="/rooms/an-vui-lodge-bungalow/#respond" style="display:none;">Hủy</a></small></h3>
+																	<h3 id="reply-title" class="comment-reply-title">Be the first to review &ldquo;An Vui Lodge Villa 14&rdquo; <small><a rel="nofollow" id="cancel-comment-reply-link" href="/rooms/an-vui-lodge-villa-14/#respond" style="display:none;">Hủy</a></small></h3>
 																	<form action="https://anvuihomestay.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
 																		<p class="comment-form-rating"><label for="rating">Your Rating</label>
 																		</p>
@@ -1968,7 +1973,7 @@
 																		<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required="true" /></p>
 																		<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
 																		<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.</label></p>
-																		<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit" /> <input type='hidden' name='comment_post_ID' value='1592' id='comment_post_ID' />
+																		<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit" /> <input type='hidden' name='comment_post_ID' value='1606' id='comment_post_ID' />
 																			<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
 																		</p>
 																	</form>
@@ -1996,19 +2001,19 @@
 														<tbody>
 															<tr>
 																<td>
-																	660.000&#8363; </td>
+																	3.850.000&#8363; </td>
 																<td>
-																	660.000&#8363; </td>
+																	3.850.000&#8363; </td>
 																<td>
-																	660.000&#8363; </td>
+																	3.850.000&#8363; </td>
 																<td>
-																	660.000&#8363; </td>
+																	3.850.000&#8363; </td>
 																<td>
-																	770.000&#8363; </td>
+																	5.500.000&#8363; </td>
 																<td>
-																	880.000&#8363; </td>
+																	8.250.000&#8363; </td>
 																<td>
-																	770.000&#8363; </td>
+																	4.950.000&#8363; </td>
 															</tr>
 														</tbody>
 													</table>
@@ -2060,29 +2065,117 @@
 							</main>
 						</div>
 						<aside id="secondary" class="widget-area" role="complementary">
-							<div class="inner">
-								<section id="text-2" class="widget widget_text">
-									<h2 class="widget-title">Liên hệ đặt phòng</h2>
-									<div class="textwidget">
-										<p>Mời uý khách liên hệ với An Vui theo thông tin dưới đây để đặt phòng:</p>
-										<ul>
-											<li>Phone: <a href="tel:+(84) 89 999 6300">+(84) 89 999 6300</a></li>
-											<li>Facebook: <a href="https://www.facebook.com/anvuilodgencottage">anvuilodgencottage</a></li>
-											<li>Zalo: <a href="https://zalo.me/0899996300">0899996300</a></li>
-										</ul>
+							<div class="form_group">
+								<form class="form">
+									<h3>Thông tin đặt Homestay</h3>
+									<div id="booking" class="section">
+										<div class="section-center">
+											<div class="">
+												<div class="row mr-0">
+													<div class="booking-form">
+														<div class="mb-3">
+															<label for="exampleInputEmail1" class="form-label">Email address</label>
+															<input placeholder="Email address" type="email" class="form-control text" id="exampleInputEmail1" aria-describedby="emailHelp" />
+														</div>
+														<div class="mb-3">
+															<label for="exampleName" class="form-label">Name</label>
+															<input placeholder="Name" type="text" class="form-control text" id="exampleName" aria-describedby="textHelp" />
+														</div>
+														<div class="mb-3">
+															<label for="examplePhone" class="form-label">Phone</label>
+															<input placeholder="Phone" type="text" class="form-control text" id="exampleName" aria-describedby="textHelp" />
+														</div>
+														<div class="row mr-0">
+															<div class="col-md-6 pr-0">
+																<div class="form-group">
+																	<span class="form-label">Check In</span>
+																	<input class="form-control" type="date" required />
+																</div>
+															</div>
+															<div class="col-md-6 pr-0">
+																<div class="form-group">
+																	<span class="form-label">Check Out</span>
+																	<input class="form-control" type="date" required />
+																</div>
+															</div>
+														</div>
+														<div class="row mr-0">
+															<div class="col-md-6 pr-0">
+																<div class="form-group">
+																	<span class="form-label">Adults</span>
+																	<select class="form-control">
+																		<option>1</option>
+																		<option>2</option>
+																		<option>3</option>
+																	</select>
+																	<span class="select-arrow"></span>
+																</div>
+															</div>
+															<div class="col-md-6 pr-0">
+																<div class="form-group">
+																	<span class="form-label">Children</span>
+																	<select class="form-control">
+																		<option>0</option>
+																		<option>1</option>
+																		<option>2</option>
+																	</select>
+																	<span class="select-arrow"></span>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<span class="form-label">Room Type</span>
+															<select class="form-control" required>
+																<option value="" selected hidden>
+																	Select room type
+																</option>
+																<option>Private Room (1 to 2 People)</option>
+																<option>Family Room (1 to 4 People)</option>
+															</select>
+															<span class="select-arrow"></span>
+														</div>
+														<div class="form-btn">
+															<button class="submit-btn">
+																Đặt ngay
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
-								</section>
+								</form>
 							</div>
 						</aside>
 					</div>
 				</div>
 			</div>
-
+			@include('frontend.layouts.footer')
 		</div>
-
+		<nav id="opal-canvas-menu" class="opal-menu-canvas mp-menu">
+			<div id="offcanvas-menu" class="offcanvas-menu menu menu-canvas-default">
+				<ul>
+					<li class="page_item page-item-17"><a href="https://anvuihomestay.com/404page/">404 Page</a></li>
+					<li class="page_item page-item-21"><a href="https://anvuihomestay.com/about-us/">About us</a></li>
+					<li class="page_item page-item-1508 current_page_parent"><a href="https://anvuihomestay.com/blog/">Blog</a></li>
+					<li class="page_item page-item-1509"><a href="https://anvuihomestay.com/contact/">Contact</a></li>
+					<li class="page_item page-item-19"><a href="https://anvuihomestay.com/gallery/">Gallery</a></li>
+					<li class="page_item page-item-5"><a href="https://anvuihomestay.com/">Home 1</a></li>
+					<li class="page_item page-item-8"><a href="https://anvuihomestay.com/hotel-rooms/">Homestay</a></li>
+					<li class="page_item page-item-11"><a href="https://anvuihomestay.com/hotel-search/">Hotel Booking Search</a></li>
+					<li class="page_item page-item-9"><a href="https://anvuihomestay.com/hotel-cart/">Hotel Cart</a></li>
+					<li class="page_item page-item-10"><a href="https://anvuihomestay.com/hotel-checkout/">Hotel Checkout</a></li>
+					<li class="page_item page-item-549"><a href="https://anvuihomestay.com/hotel-checkout-2/">Hotel Checkout</a></li>
+					<li class="page_item page-item-547"><a href="https://anvuihomestay.com/hotel-rooms-2/">Hotel Rooms</a></li>
+					<li class="page_item page-item-14"><a href="https://anvuihomestay.com/hotel-thank-you/">Hotel Thank You</a></li>
+				</ul>
+			</div>
+		</nav>
 	</div>
-	@include('frontend.layouts.footer')
+
 	<div id="fb-root"></div>
+
+
 	<script>
 		window.fbAsyncInit = function() {
 			FB.init({
@@ -2103,7 +2196,6 @@
 
 	<div class="fb-customerchat" attribution="page_inbox" page_id="2235414456705443">
 	</div>
-
 	<script type="text/html" id="tmpl-hb-minicart-footer">
 		<div class="hb_mini_cart_footer">
 
@@ -2122,7 +2214,7 @@
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/TweenMax.min.js?ver=1.0.5' id='tweenmax-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/tooltipster.bundle.min.js?ver=1.0.5' id='tooltipster-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/jquery-parallax.js?ver=1.0.5' id='parallaxmouse-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/jquery.magnific-popup.min.js?ver=5.8.1' id='magnific-popup-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/jquery.magnific-popup.min.js?ver=5.8.2' id='magnific-popup-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/jquery.smartmenus.min.js?ver=1.0.5' id='smartmenus-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/mlpushmenu.js?ver=1.0.5' id='pushmenu-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/libs/classie.js?ver=1.0.5' id='pushmenu-classie-js'></script>
@@ -2170,7 +2262,7 @@
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/dist/api-fetch.min.js?ver=134e23b5f88ba06a093f9f92520a98df' id='wp-api-fetch-js'></script>
 	<script type='text/javascript' id='wp-api-fetch-js-after'>
 		wp.apiFetch.use(wp.apiFetch.createRootURLMiddleware("https://anvuihomestay.com/wp-json/"));
-		wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware("56715ddbb2");
+		wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware("4fc4bb42da");
 		wp.apiFetch.use(wp.apiFetch.nonceMiddleware);
 		wp.apiFetch.use(wp.apiFetch.mediaUploadMiddleware);
 		wp.apiFetch.nonceEndpoint = "https://anvuihomestay.com/wp-admin/admin-ajax.php?action=rest-nonce";
@@ -2281,11 +2373,11 @@
 		/* ]]> */
 	</script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/js/theme.js?ver=1.0' id='amihomestay-theme-js-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/js/sticky-layout.js?ver=5.8.1' id='amihomestay-theme-sticky-layout-js-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/js/sticky-layout.js?ver=5.8.2' id='amihomestay-theme-sticky-layout-js-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/themes/amihomestay/assets/js/navigation.js?ver=1.0' id='amihomestay-navigation-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/comment-reply.min.js?ver=5.8.1' id='comment-reply-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/comment-reply.min.js?ver=5.8.2' id='comment-reply-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/SmoothScroll.min.js?ver=1.4.8' id='smoothscroll-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/wp-embed.min.js?ver=5.8.1' id='wp-embed-js'></script>
+	<script type='text/javascript' src='https://anvuihomestay.com/wp-includes/js/wp-embed.min.js?ver=5.8.2' id='wp-embed-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.2.2' id='elementor-webpack-runtime-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.2.2' id='elementor-frontend-modules-js'></script>
 	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js'></script>
@@ -2387,17 +2479,76 @@
 				"lightbox_description_src": "description"
 			},
 			"post": {
-				"id": 1592,
-				"title": "An%20Vui%20Lodge%20Bungalow%20%E2%80%93%20An%20Vui%20Homestay",
+				"id": 1606,
+				"title": "An%20Vui%20Lodge%20Villa%2014%20%E2%80%93%20An%20Vui%20Homestay",
 				"excerpt": "",
-				"featuredImage": "https:\/\/anvuihomestay.com\/wp-content\/uploads\/2021\/04\/room_24496_52_1557127783-1024x683.jpg"
+				"featuredImage": "https:\/\/anvuihomestay.com\/wp-content\/uploads\/2021\/04\/IMG_7886-1024x683.jpg"
 			}
 		};
 	</script>
-	
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.2.2' id='elementor-frontend-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/elementor/assets/js/preloaded-modules.min.js?ver=3.2.2' id='preloaded-modules-js'></script>
-	<script type='text/javascript' src='https://anvuihomestay.com/wp-content/plugins/amihomestay-core/assets/js/elementor/frontend.js?ver=5.8.1' id='opal-elementor-frontend-js'></script>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="{{ asset('frontend_assets/lib/easing/easing.min.js') }}"></script>
+	<script src="{{ asset('frontend_assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+	<script src="{{ asset('frontend_assets/lib/waypoints/waypoints.min.js') }}"></script>
+	<script src="{{ asset('frontend_assets/lib/counterup/counterup.min.js') }}"></script>
+
+	<!-- Contact Javascript File -->
+	<script src="{{ asset('frontend_assets/mail/jqBootstrapValidation.min.js') }}"></script>
+	<script src="{{ asset('frontend_assets/mail/contact.js') }}"></script>
+
+	<!-- Template Javascript -->
+	<script src="{{ asset('frontend_assets/js/main.js') }}"></script>
+	<!--jquery CDN-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!--slick slider -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript">
+		$('.slider-team').slick({
+			dots: true,
+			infinite: true,
+			speed: 300,
+			slidesToShow: 2,
+			slidesToScroll: 1,
+			responsive: [{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						infinite: true,
+						dots: true
+					}
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						arrows: false
+					}
+				},
+
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						arrows: false
+					}
+				}
+				// You can unslick at a given breakpoint now by adding:
+				// settings: "unslick"
+				// instead of a settings object
+			]
+		});
+	</script>
+	<!--michelsnik-->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
 </body>
 
 </html>

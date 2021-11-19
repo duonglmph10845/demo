@@ -16,8 +16,7 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <h1>An<span>Vui</span></h1>
-                            <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                        <img src="{{ asset('frontend_assets/img/logo.jpg') }}" alt="Logo" width="200px">
                         </a>
                     </div>
                 </div>

@@ -83,7 +83,7 @@
                         </div>
                         <div class="team-text">
                             <h2 class="textct">{{ $item->name }}</h2>
-                            <div class="button-link button-xs"><a href="blog.html">xem chi tiết <i class="fas fa-long-arrow-alt-right"></i></a>
+                            <div class="button-link button-xs"><a href="{{ route('room_type', [ 'id' => $item->id ]) }}">xem chi tiết <i class="fas fa-long-arrow-alt-right"></i></a>
 
                             </div>
 

@@ -8,139 +8,41 @@
 
 <body>
     @include('frontend.layouts.header')
+    
+    <!-- Blog Start -->
     <div class="blog">
         <div class="container">
             <div class="section-header text-center">
-                <p>An Vui Lodge Villa 20</p>
-                <h2>View Bể bơi</h2>
+                <p>HOMESTAY Lodge Villa 20</p>
+                <h2>{{ $Romm_types->name }}</h2>
             </div>
             <div class="row">
+                @foreach ($ListRooms as $item)
                 <div class="col-lg-4">
                     <div class="blog-item">
                         <div class="blog-img">
-                            <img src="img/beboi1.jpg" alt="Image">
-                            <div class="meta-date">
-                                <span>01</span>
-                                <strong>Jan</strong>
-                                <span>2045</span>
-                            </div>
+                            <img src="{{ config('app.base_url') . $item->feature_image_path	 }}" alt="Image">
+
                         </div>
                         <div class="blog-text">
-                            <h3><a href="#">Madam Diệu Hảo</a></h3>
+                            <h3><a href="{{ route('room_detail', [ 'id' => $item->id ])}}">{{ $item->name_room }}</a></h3>
                             <p>
-                                Đây cũng là một địa chỉ rất thú vị, có khoảng trời trong lành, là nơi lý tưởng để bạn tổ
-                                chức tiệc BBQ, cắm trại.
+                                Những homestay được xây dựng tập trung tất cả những hoạt động vui
+                                chơi, nghỉ dưỡng cho mọi thành viên trong gia đình như thảm cỏ , hồ bơi, khu cắm trại,khu vui chơi trẻ em,
+                                khu tổ chức tiệc nướng BBQ,…
                             </p>
+                            <h3 class="price-detail" style="color: #cf9d6c">{{ number_format($item->price) }}VND</h3>
                         </div>
-                        
+                        <div class="form-btn">
+                            <button class="submit-btn">
+                                <a href="">
+                                Xem chi tiết homestay
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="img/beboi2.jpg" alt="Image">
-                            <div class="meta-date">
-                                <span>01</span>
-                                <strong>Jan</strong>
-                                <span>2045</span>
-                            </div>
-                        </div>
-                        <div class="blog-text">
-                            <h3><a href="#">Homestay Đào Anh Khánh</a></h3>
-                            <p>
-                                Các phòng và không gian ở đây được thiết kế nhiều màu sắc, thoáng mát, gần gũi với thiên
-                                nhiên. Các phòng có cấu trúc tương đối lạ mắt, nhưng rất tiện nghi được trang bị nhiều
-                                thiết bị và đồ dùng cá nhân cần thiết.
-                            </p>
-                        </div>
-                      
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="img/beboi3.jpg" alt="Image">
-                            <div class="meta-date">
-                                <span>01</span>
-                                <strong>Jan</strong>
-                                <span>2045</span>
-                            </div>
-                        </div>
-                        <div class="blog-text">
-                            <h3><a href="#">Peace Green Chic Flat</a></h3>
-                            <p>
-                                Hòa Bình Green Chic Flat rất thích hợp cho những chuyến du lịch ngắn ngày, những bạn trẻ
-                                yêu Hà Nội, muốn nghỉ dưỡng tại những địa điểm lý tưởng, tránh xa ồn ào nhưng không muốn
-                                di chuyển quá xa.
-                            </p>
-                        </div>
-                     
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="img/beboi4.jpg" alt="Image">
-                            <div class="meta-date">
-                                <span>01</span>
-                                <strong>Jan</strong>
-                                <span>2045</span>
-                            </div>
-                        </div>
-                        <div class="blog-text">
-                            <h3><a href="#">Phorri’s House Mê Linh Homestay</a></h3>
-                            <p>
-                                Các phòng ở đây đều có kiến ​​trúc hiện đại và nội thất vô cùng sang trọng, tất cả các
-                                phòng đều có hướng vườn rất đẹp. Và đặc biệt điều này cũng vậy Homestay ngoại thành Hà
-                                Nội có hồ bơi Tiêu chuẩn 5 sao.
-                            </p>
-                        </div>
-                       
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="img/beboi5.jpg" alt="Image">
-                            <div class="meta-date">
-                                <span>01</span>
-                                <strong>Jan</strong>
-                                <span>2045</span>
-                            </div>
-                        </div>
-                        <div class="blog-text">
-                            <h3><a href="#">Mayfair Homestay</a></h3>
-                            <p>
-                                Mayfair Homestay có hồ bơi ngoài trời thoáng mát và rộng rãi là không gian tuyệt vời để
-                                bạn thư giãn. Giá phòng ở đây cũng được đánh giá ở mức phù hợp với túi tiền của nhiều du
-                                khách.
-                            </p>
-                        </div>
-                     
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="img/beboi4.jpg" alt="Image">
-                            <div class="meta-date">
-                                <span>01</span>
-                                <strong>Jan</strong>
-                                <span>2045</span>
-                            </div>
-                        </div>
-                        <div class="blog-text">
-                            <h3><a href="#">Thung Mây Homestay ở ngoại thành 
-                                </a></h3>
-                            <p>
-                                Thung Mây Homestay Hà Nội là một trong những homestay ngoại thành Hà Nội có giá rẻ. Các
-                                phòng ở đây hầu hết được thiết kế rất đơn giản, có phòng tập thể, phòng cho gia đình và
-                                cho các cặp đôi.
-                            </p>
-                        </div>
-                     
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-12">

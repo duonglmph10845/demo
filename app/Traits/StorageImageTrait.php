@@ -13,7 +13,8 @@ trait StorageImageTrait
             $file = $request->$fileName;
             $fileNameOrigin = $file->getClientOriginalName();
             $fileNameHas = Str::random(20) . '.' . $file->getClientOriginalExtension();
-            $filePath = $request->file('feature_image_path')->storeAs($foderName . '/' . auth()->id(), $fileNameHas);
+            $filePath = $request->file($fileName)->storeAs('public/' . $foderName . '/' . auth()->id(), $fileNameHas);
+            
             $dataUploadTrait = [
                 'file_path' => Storage::url($filePath),
             ];
@@ -26,7 +27,7 @@ trait StorageImageTrait
     {
             $fileNameOrigin = $file->getClientOriginalName();
             $fileNameHas = Str::random(20) . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs($foderName . '/' . auth()->id(), $fileNameHas);
+            $filePath = $file->storeAs('public/' . $foderName . '/' . auth()->id(), $fileNameHas);
             $dataUploadTrait = [
                 'file_path' => Storage::url($filePath),
             ];
