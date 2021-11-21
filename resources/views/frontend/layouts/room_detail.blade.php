@@ -142,12 +142,34 @@
                         <label for="exampleFormControlTextarea1">Example textarea</label>
                         <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Gửi</button>
                     </form>
+                  </div>
+                  <div>
+                    @foreach ($listComments as $item)
+                    <b>{{ $item->full_name }}</b>
+                    <span style="float:right;font-size:10px">{{ $item->created_at }}</span>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <p>{{ $item->content }}</p>
+                      </div>
+                      <div class="col-md-4">
+                        @if(Auth::check())
+                        @if(auth()->user()->id == $item->created_by)
+                        <form action="" method="POST">
+                          @csrf
+
+                          <button type="submit" style="float:right;font-size:10px">Xoa</button>
+
+                          @elseif(auth()->user()->role == config('common.user.role.admin'))
+
+                          <button type="submit" style="float:right;font-size:10px">Xoa</button>
+                        </form>
+                        @endif
+                        @endif
+                      </div>
+                    </div>
+                    @endforeach
                   </div>
                 </div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -248,6 +270,32 @@
           </div>
         </div>
       </div>
+      <div class="list-product-same" id="list-product-same">
+                <div class="header-product">
+                    <h2 class="c-title">Có thể bạn cũng thích </h2>
+                </div>
+                <div class="row c-box_list">
+                    <div class="swiper-container  c-swipper-relate">
+                        <div class="swiper-wrapper row">
+                            @foreach ($splq as $item => $value)
+                            <div class="col-md-3 c-item swiper-slide">
+                                <a href="" title="Woven Trousers Pants" class="c-image">
+                                    <img src="{{ $value->	feature_image_path }}" alt="Woven Trousers Pants" class="img-fluid">
+                                </a>
+                                <h3 class="c-name" style="font-size: 16px; font-family: t-light; padding-top: 9px;">
+                                    <a style="color: #333333;text-decoration: none;background-color: transparent;-webkit-text-decoration-skip: objects;box-sizing: border-box;" href="" title="Woven Trousers Pants" class="name">
+                                        {{ $value->name }} </a>
+                                </h3>
+                                <p class="c-price" style="box-sizing: border-box; font-weight: bold;">
+                                    {{ number_format($value->price) }} VND
+                                </p>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+            </div>
     </div>
   </div>
 

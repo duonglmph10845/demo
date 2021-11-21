@@ -26,6 +26,9 @@ Route::get('/profile', function () {
 Route::get('/profile_ss', function () {
     return view('user.profile.edit');
 })->name('user.profile.edit');
+Route::get('/edit_pass', function () {
+    return view('user.profile.password.index');
+})->name('user.profile.password.index');
 Route::get('/', function () {
     $ListSlider = Slider::paginate(10);
     return view('frontend/layouts/master', [
@@ -137,5 +140,13 @@ Route::group([
         Route::get('edit/{id}', 'PostController@edit')->name('edit');
         Route::post('update/{id}', 'PostController@update')->name('update');
         Route::post('delete/{id}', 'PostController@delete')->name('delete');
+    });
+
+    Route::group([
+        'prefix' => 'comments',
+        'as' => 'comments.',
+    ], function () {
+        Route::get('/', 'CommentController@index')->name('index');
+        Route::get('ct_comment/{id}', 'CommentController@getComment')->name('ct_comment');
     });
 });

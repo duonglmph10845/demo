@@ -20,7 +20,12 @@ class Room extends Model
         'feature_image_path'
         
     ];
-    public function imageRoom(){
+    public function room_types()
+    {
+        return $this->belongsTo(RoomTyPe::class, 'room_type', 'id');
+    }
+    public function imageRoom()
+    {
         return $this->hasMany(ImageRoom::class, 'room_id', 'id');
     }
 }

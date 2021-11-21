@@ -4,12 +4,93 @@
 <head>
     <title>Document</title>
     @include('frontend.layouts.head')
+    <style>
+            * {
+              box-sizing: border-box;
+            }
+            
+            body {
+              margin: 0;
+              font-family: Arial;
+            }
+            
+            .header {
+              text-align: center;
+              padding: 32px;
+            }
+            
+            .row {
+              display: -ms-flexbox; /* IE10 */
+              display: flex;
+              -ms-flex-wrap: wrap; /* IE10 */
+              flex-wrap: wrap;
+              padding: 0 4px;
+            }
+            
+            /* Create four equal columns that sits next to each other */
+            .column {
+              -ms-flex: 25%; /* IE10 */
+              flex: 25%;
+              max-width: 25%;
+              padding: 0 4px;
+            }
+            
+            .column img {
+              margin-top: 8px;
+              vertical-align: middle;
+              width: 100%;
+            }
+            
+            /* Responsive layout - makes a two column-layout instead of four columns */
+            @media screen and (max-width: 800px) {
+              .column {
+                -ms-flex: 50%;
+                flex: 50%;
+                max-width: 50%;
+              }
+            }
+            
+            /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+              .column {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+              }
+            }
+            </style>
 </head>
 
 <body>
     @include('frontend.layouts.header')
-    <!-- About Start -->
-    <div class="about">
+    <!-- Page Header Start -->
+    <div class="carousel">
+        <div class="">
+            <div class="owl-carousel">
+                @foreach ($data as $item)
+                <div class="carousel-item">
+                    <div class="carousel-img">
+                        <img src="{{ $item->image }}" height="300px" alt="Image">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Booking Homestay</h3>
+                        <h1>{{ $item->content }}</h1>
+                        <!-- <p>
+                            Sed ultrices, est eget feugiat accumsan, dui nibh egestas tortor, ut rhoncus nibh ligula
+                            euismod quam
+                        </p> -->
+                        <a class="btn btn-custom" href="">Tìm hiểu thêm</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+        <!-- Page Header End -->
+        
+
+        <!-- About Start -->
+        <div class="about">
             <div class="container">
                 <div class="row align-items-center">
                     
@@ -34,7 +115,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="about-img">
-                            <img src="img/bannersinger.jpg" alt="Image">
+                            <img src="{{ asset('frontend_assets/img/bannersinger.jpg') }}" alt="Image">
                         </div>
                     </div>
                 </div>
@@ -49,25 +130,25 @@
         <div class="row"> 
             <div class="column">
              
-              <img src="./img/2.jpg" style="width:100%">
+              <img src="{{ asset('frontend_assets/./img/2.jpg') }}" style="width:100%">
              
-              <img src="./img/3.jpg" style="width:100%">
+              <img src="{{ asset('frontend_assets/./img/3.jpg') }}" style="width:100%">
             </div>
             <div class="column">
-              <img src="./img/4.jpg" style="width:100%">
-              <img src="./img/3.jpg" style="width:100%">
+              <img src="{{ asset('frontend_assets/./img/4.jpg') }}" style="width:100%">
+              <img src="{{ asset('frontend_assets/./img/3.jpg') }}" style="width:100%">
               
               
             </div>  
             <div class="column">
           
-              <img src="./img/5.jpg" style="width:100%">
+              <img src="{{ asset('frontend_assets/./img/5.jpg') }}" style="width:100%">
             
             </div>
             <div class="column">
 
    
-                <img src="./img/4.jpg" style="width:100%">
+                <img src="{{ asset('frontend_assets/./img/4.jpg') }}" style="width:100%">
               </div>
           </div>
            <!--edit   -->
@@ -110,62 +191,7 @@
 
 
 
-         <!-- Testimonial Start -->
-    <div class="testimonial">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Testimonial</p>
-                <h2>What our clients say</h2>
-            </div>
-            <div class="owl-carousel testimonials-carousel">
-                <div class="testimonial-item">
-                    <img src="img/testimonial-1.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu
-                            metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/testimonial-2.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu
-                            metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/testimonial-3.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu
-                            metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/testimonial-4.jpg" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Client Name</h3>
-                        <h4>Profession</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet elit. Phasel preti mi facilis ornare velit non vulputa. Aliqu
-                            metus tortor auctor gravid
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+         
     <div class="price">
         <div class="container">
             <div class="section-header text-center">

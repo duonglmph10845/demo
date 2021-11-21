@@ -77,8 +77,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Homestay</a>
                             <div class="dropdown-menu">
-                                @foreach ($category as $item)
-                                <a href="{{ route('room_type', [ 'id' => $item->id ]) }}" class="dropdown-item">{{ $item->name }}</a>
+                                @foreach ($category as $items)
+                                <a href="{{ route('room_type', [ 'id' => $items->id ]) }}" class="dropdown-item">{{ $items->name }}</a>
                                 @endforeach
                             </div>
                         </div>

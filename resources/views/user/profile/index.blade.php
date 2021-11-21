@@ -15,13 +15,13 @@
 	<div class="row">
 		<div class="col-xl-3 col-lg-3 col-md-12">
 			<div class="card border-0">
-				<div class="widget-user-image overflow-hidden mx-auto mt-5"><img alt="User Avatar" class="rounded-circle" ></div>
+				<div class="widget-user-image overflow-hidden mx-auto mt-5"><img alt="User Avatar" src="{{ asset('frontend_assets/img/avatar.jpg') }}" class="rounded-circle" ></div>
 				<div class="card-body text-center">
 					<div>
 						<h4 class="mb-1 mt-1 font-weight-bold fs-16"></h4>
 						<h6 class="text-muted fs-12"></h6>
 					
-							<h6 class="text-muted fs-12">Active Subscription Plan: <span class="text-info"></span></h6>
+							<h6 class="text-muted fs-12">{{ auth()->user()->full_name }} <span class="text-info"></span></h6>
 						
 						<a href="{{ route('user.profile.edit') }}" class="btn btn-primary mt-3 mb-2"><i class="fa fa-pencil mr-1"></i> {{ __('Edit Profile') }}</a>
 					</div>

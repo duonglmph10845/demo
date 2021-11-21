@@ -21,12 +21,12 @@
 				<div class="card-body">
 					<div class="text-center mb-5">
 						<div class="widget-user-image overflow-hidden">
-							<img alt="User Avatar" class="rounded-circle mr-3" src="@if(auth()->user()->profile_photo_path){{ asset(auth()->user()->profile_photo_path) }} @else {{ URL::asset('img/users/avatar.jpg') }} @endif">
+							<img alt="User Avatar" class="rounded-circle mr-3" src="{{ asset('frontend_assets/img/avatar.jpg') }}">
 						</div>
-						<h4 class="mb-1 mt-4 font-weight-bold fs-16">{{ auth()->user()->name }}</h4>
+						<h4 class="mb-1 mt-4 font-weight-bold fs-16">{{ auth()->user()->full_name }}</h4>
 						<h6 class="text-muted fs-12">{{ __('Last Profile Update') }}: {{ auth()->user()->updated_at->diffForHumans() }}</h6>
 					</div>
-					<form method="POST" action="{{ route('user.password.update', [auth()->user()->id]) }}" enctype="multipart/form-data">
+					<form method="POST" action="" enctype="multipart/form-data">
 
 						@csrf
 
@@ -53,7 +53,7 @@
 							</div>
 						</div>
 						<div class="card-footer border-0 text-right mt-2 pr-0 pb-0">
-							<a href="{{ route('user.profile', [auth()->user()->id]) }}" class="btn btn-cancel mr-2">{{ __('Cancel') }}</a>
+							<a href="{{ route('user.profile.index') }}" class="btn btn-cancel mr-2">{{ __('Cancel') }}</a>
 							<button type="submit" class="btn btn-primary">{{ __('Change') }}</button>							
 						</div>
 					</form>					
