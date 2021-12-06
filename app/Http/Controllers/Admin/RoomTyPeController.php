@@ -36,8 +36,7 @@ class RoomTyPeController extends Controller
     public function edit($id)
     {
         $data = RoomTyPe::find($id);
-        $htmlOptions = $this->getCate($data->parent_id);
-        return view('admin/categories/edit', compact('data', 'htmlOptions'));
+        return view('admin/categories/edit', compact('data'));
     }
     public function update($id)
     {

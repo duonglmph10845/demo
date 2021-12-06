@@ -52,6 +52,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id')->withTimestamps();
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    } 
+    
     public function setPasswordAttribute($value)
     {
         $hashed = bcrypt($value);

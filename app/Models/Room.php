@@ -28,4 +28,7 @@ class Room extends Model
     {
         return $this->hasMany(ImageRoom::class, 'room_id', 'id');
     }
+    public function comments(){
+        return $this->hasMany(Comment::class, 'room_id', 'id');
+    }
 }

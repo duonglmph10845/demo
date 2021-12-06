@@ -51,21 +51,26 @@
                     <div class="col-md-7">
                         <div class="contact-form">
                             <div id="success"></div>
-                            <form action="" method="POST" name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <form action="{{ route('contact.store') }}" method="POST" name="sentMessage" id="contactForm" novalidate="novalidate">
+                                @csrf
                                 <div class="control-group">
-                                    <input type="text" class="form-control" id="name" placeholder="Họ tên" required="required" data-validation-required-message="Please enter your name" />
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Họ tên" required="required" data-validation-required-message="Please enter your name" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group">
-                                    <input type="email" class="form-control" id="email" placeholder="Email" required="required" data-validation-required-message="Please enter your email" />
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required" data-validation-required-message="Please enter your email" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group">
-                                    <input type="number" class="form-control" id="phonenumber" placeholder="Số điện thoại" required="required" data-validation-required-message="Please enter a subject" />
+                                    <input type="number" class="form-control" name="phone" id="phonenumber" placeholder="Số điện thoại" required="required" data-validation-required-message="Please enter a subject" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group">
-                                    <textarea class="form-control" id="message" placeholder="Ghi chú" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                    <input type="text" class="form-control" name="subject" id="phonenumber" placeholder="Tiêu đề" required="required" data-validation-required-message="Please enter a subject" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="control-group">
+                                    <textarea class="form-control" name="message" id="message" placeholder="Ghi chú" required="required" data-validation-required-message="Please enter your message"></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div>
@@ -75,7 +80,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1600663868074!5m2!1sen!2sbd" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14893.434650400453!2d105.35763422880046!3d21.058332575716154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313460d3fcf0a119%3A0xd1e8e654e7684791!2zRMOjeSBuw7ppIEJhIFbDrA!5e0!3m2!1svi!2s!4v1638430861703!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>

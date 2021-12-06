@@ -10,7 +10,6 @@
     @include('frontend.layouts.header')
     <!-- Carousel Start -->
     <div class="carousel">
-        <div class="">
             <div class="owl-carousel">
                 @foreach ($data as $item)
                 <div class="carousel-item">
@@ -29,7 +28,6 @@
                 </div>
                 @endforeach
             </div>
-        </div>
     </div>
     <!-- Carousel End -->
 

@@ -20,13 +20,13 @@ class RoomController extends Controller
         if ($request->has('keyword') == true) {
             $keyword = $request->get('keyword');
             $Rooms = DB::table('rooms')
-                ->select('rooms.id', 'rooms.name as name_room', 'rooms.introduce', 'rooms.room_type', 'rooms.price', 'rooms.introduce_of_room', 'rooms.status', 'rooms.feature_image_path', 'room_types.name')
+                ->select('rooms.id', 'rooms.name', 'rooms.introduce', 'rooms.room_type', 'rooms.price', 'rooms.introduce_of_room', 'rooms.status', 'rooms.feature_image_path', 'room_types.name as name_type')
                 ->join('room_types', 'rooms.room_type', '=', 'room_types.id')
-                ->where('name', 'LIKE', "%$keyword%")
+                ->where('rooms.name', 'LIKE', "%$keyword%")
                 ->paginate(10);
         } else {
             $Rooms = DB::table('rooms')
-                ->select('rooms.id', 'rooms.name as name_room', 'rooms.introduce', 'rooms.room_type', 'rooms.price', 'rooms.introduce_of_room', 'rooms.status', 'rooms.feature_image_path', 'room_types.name')
+                ->select('rooms.id', 'rooms.name', 'rooms.introduce', 'rooms.room_type', 'rooms.price', 'rooms.introduce_of_room', 'rooms.status', 'rooms.feature_image_path', 'room_types.name as name_type')
                 ->join('room_types', 'rooms.room_type', '=', 'room_types.id')
                 ->paginate(10);
         }
@@ -84,7 +84,6 @@ class RoomController extends Controller
 
     public function update($id, Request $request)
     {
-        dd($request->all());
         $data = Room::find($id);
         $result = [
             'name' => $request->name,
@@ -94,7 +93,6 @@ class RoomController extends Controller
             'introduce_of_room' => $request->introduce_of_room,
         ];
         $dataUploadFileRoooms = $this->storageImageUpload($request, 'feature_image_path', 'rooms');
-
         if (!empty($dataUploadFileRoooms)) {
 
             $result['feature_image_path'] = $dataUploadFileRoooms['file_path'];

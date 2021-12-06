@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <!-- Top Bar Start -->
     <div class="top-bar">
         <div class="container">
@@ -16,7 +21,7 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                        <img src="{{ asset('frontend_assets/img/logo.jpg') }}" alt="Logo" width="200px">
+                            <img src="{{ asset('frontend_assets/img/logo.jpg') }}" alt="Logo" width="200px">
                         </a>
                     </div>
                 </div>
@@ -86,7 +91,7 @@
                     </div>
 
                     @if(!Auth::check())
-                    <a href="{{ route('auth.getLoginForm') }}" class="nav-item nav-link"> Đăng nhập <i class="fas fa-sign-in-alt"></i></a>       
+                    <a href="{{ route('auth.getLoginForm') }}" class="nav-item nav-link"> Đăng nhập <i class="fas fa-sign-in-alt"></i></a>
                     @else
                     <a style="text-transform: uppercase;color: #212121; text-decoration: none;" href="{{ route('admin') }}"> &nbsp;{{ Auth::user()->full_name }}</a>&nbsp;&nbsp;&nbsp;
                     @endif

@@ -11,6 +11,18 @@
 <body>
     @extends('admin/layout_master/layout_master')
     @section('contents')
+    <!-- PAGE HEADER -->
+	<div class="page-header mt-5-7">
+		<div class="page-leftheader">
+			<h4 class="page-title mb-0">{{ __('Danh sách các loại phòng') }}</h4>
+			<ol class="breadcrumb mb-2">
+				<li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fa fa-magic mr-2 fs-12"></i>{{ __('Admin') }}</a></li>
+				<li class="breadcrumb-item" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Website') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Danh sách các loại phòng') }}</a></li>
+			</ol>
+		</div>
+	</div>
+	<!-- END PAGE HEADER -->
     <div class="container">
         <form action="{{ route('admin.categories.index') }}" method="GET" class="row">
             <div class="col-md-12" style="margin-left: 300px;">
@@ -22,9 +34,11 @@
     <table class="table table-bordered table-hover mt-4 rounded">
         <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
             <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Image</td>
+                <td style="width: 10px;">Stt</td>
+                <td>Tên loại phòng</td>
+                <td>Ảnh loại phòng</td>
+                <td>Thông điệp</td>
+                <td>Ngày thêm</td>
                 <td><a href="{{ route('admin.categories.create') }}">
                         Thêm mới</a></td>
             </tr>
@@ -35,9 +49,11 @@
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td><img src="{{ $item->image }}" alt="" width="100px" height="100px"></td>
+                <td>{{ $item->introduce }}</td>
+                <td>{{ $item->created_at }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ route('admin.categories.edit', [ 'id' => $item->id ])}}">Update</a>
-                    <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Delete</button>
+                    <a class="btn btn-primary" href="{{ route('admin.categories.edit', [ 'id' => $item->id ])}}">Sửa</a>
+                    <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Xóa</button>
                     <div class="modal fade" id="confirm_delete_{{ $item->id }}" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -51,7 +67,7 @@
                                     Xóa bản ghi này?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
                                     <form action="{{ route('admin.categories.delete', [ 'id' => $item->id ])}}" method="POST">
                                         @csrf
                                         <button tybe="submit" class="btn btn-danger">Xóa</button>

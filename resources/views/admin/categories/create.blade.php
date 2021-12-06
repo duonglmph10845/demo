@@ -1,15 +1,28 @@
 @extends('admin/layout_master/layout_master')
 @section('contents')
+<!-- PAGE HEADER -->
+<div class="page-header mt-5-7">
+    <div class="page-leftheader">
+        <h4 class="page-title mb-0">{{ __('Thêm mới các loại phòng') }}</h4>
+        <ol class="breadcrumb mb-2">
+            <li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fa fa-magic mr-2 fs-12"></i>{{ __('Admin') }}</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Website') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Thêm mới các loại phòng') }}</a></li>
+        </ol>
+    </div>
+</div>
+<!-- END PAGE HEADER -->
 <form action="{{ route('admin.categories.store') }}" method="POST">
     @csrf
     <div class="mt-3" style="color: 000000;">
-        <label for="">Tên danh mục</label>
+        <label for="">Tên loại phòng</label>
         <input class="form-control" type="text" name="name">
         @error('name')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
     <div class="mt-3">
+        <label for="">Ảnh loại phòng</label>
         <div class="input-group">
             <span class="input-group-btn">
                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
@@ -29,7 +42,6 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <textarea class="mt-3" id="my-editor" name="content" class="form-control">{!! old('content', 'test editor content') !!}</textarea>
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>
         var options = {

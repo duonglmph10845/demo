@@ -52,7 +52,7 @@ class AuthController extends Controller
             return back();
         }
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Đăng nhập thành công');
     }
 
     public function redirectToProvider()
@@ -62,6 +62,7 @@ class AuthController extends Controller
 
     public function handleProviderCallback(Request $request)
     {
+        
         try {
 			session()->put('state', $request->input('state'));
 			$user = Socialite::driver('google')->user();
@@ -88,7 +89,7 @@ class AuthController extends Controller
 			// dd("save done");
         }
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Đăng nhập thành công');
     }
 
 

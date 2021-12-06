@@ -11,6 +11,18 @@
 <body>
     @extends('admin/layout_master/layout_master')
     @section('contents')
+	<!-- PAGE HEADER -->
+	<div class="page-header mt-5-7">
+		<div class="page-leftheader">
+			<h4 class="page-title mb-0">{{ __('Cập nhật Thông tin tài khoản') }}</h4>
+			<ol class="breadcrumb mb-2">
+				<li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fa fa-magic mr-2 fs-12"></i>{{ __('Tài khoản') }}</a></li>
+				<li class="breadcrumb-item" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Hồ sơ cá nhân') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Cập nhật Thông tin tài khoản') }}</a></li>
+			</ol>
+		</div>
+	</div>
+	<!-- END PAGE HEADER -->
    <!-- EDIT USER PROFILE PAGE -->
 	<div class="row">
 		<div class="col-xl-3 col-lg-4">
@@ -20,31 +32,16 @@
 					<div>
 						<h4 class="mb-1 mt-1 font-weight-bold fs-16">{{ auth()->user()->full_name }}</h4>
 						<h6 class="text-muted fs-12">{{ auth()->user()->job_role }}</h6>
-						<a href="{{ route('user.profile.index') }}" class="btn btn-primary mt-3 mb-2">{{ __('View Profile') }}</a>
+						<a href="{{ route('user.profile.index') }}" class="btn btn-primary mt-3 mb-2">{{ __('Chỉnh sửa hồ sơ') }}</a>
 					</div>
 				</div>
-				<div class="card-footer p-0">
-					<div class="row">
-						<div class="col-sm-6 border-right text-center">
-							<div class="p-4">
-								<h5 class="mb-1 font-weight-bold text-dark number-font fs-14">${{ number_format(auth()->user()->balance) }}</h5>
-								<span class="text-muted fs-14">{{ __('Current Balance') }}</span>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="text-center p-4">
-								<h5 class="mb-1 font-weight-bold text-dark number-font fs-14">{{ number_format(auth()->user()->available_chars) }}</h5>
-								<span class="text-muted fs-14">{{ __('Available Characters') }}</span>
-							</div>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 		</div>
 		<div class="col-xl-9 col-lg-8">
 			<div class="card border-0">
 				<div class="card-header">
-					<h3 class="card-title">{{ __('Edit Profile') }}</h3>
+					<h3 class="card-title">{{ __('Chỉnh sửa hồ sơ') }}</h3>
 				</div>
 				<div class="card-body pb-0">
 					<form method="POST" action="" enctype="multipart/form-data">
@@ -54,7 +51,7 @@
 							<div class="col-sm-6 col-md-6">
 								<div class="input-box">
 									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Full Name') }}</label>
+										<label class="form-label fs-12">{{ __('Họ tên') }}</label>
 										<input type="text" class="form-control @error('name') is-danger @enderror" name="name" value="{{ auth()->user()->name }}">
 										@error('name')
 											<p class="text-danger">{{ $errors->first('name') }}</p>
@@ -76,7 +73,7 @@
 							<div class="col-sm-6 col-md-6">
 								<div class="input-box">
 									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Email Address') }}</label>
+										<label class="form-label fs-12">{{ __('Email') }}</label>
 										<input type="email" class="form-control @error('email') is-danger @enderror" name="email" value="{{ auth()->user()->email }}">
 										@error('email')
 											<p class="text-danger">{{ $errors->first('email') }}</p>
@@ -88,7 +85,7 @@
 							<div class="col-sm-6 col-md-6">
 								<div class="input-box">
 									<div class="form-group">								
-										<label class="form-label fs-12">{{ __('Phone Number') }}</label>
+										<label class="form-label fs-12">{{ __('Số điện thoại') }}</label>
 										<input type="tel" class="fs-12 @error('phone_number') is-danger @enderror" id="phone-number" name="phone_number" value="{{ auth()->user()->phone_number }}">
 										@error('phone_number')
 											<p class="text-danger">{{ $errors->first('phone_number') }}</p>
@@ -98,7 +95,7 @@
 							</div>			
 							<div class="col-sm-6 col-md-6">
 								<div class="input-box">
-									<label class="form-label fs-12">{{ __('Change Avatar') }}</label>
+									<label class="form-label fs-12">{{ __('Ảnh đại diện') }}</label>
 									<div class="input-group file-browser">									
 										<input type="text" class="form-control border-right-0 browse-file" placeholder="choose" readonly>
 										<label class="input-group-btn">
@@ -112,32 +109,10 @@
 									@enderror
 								</div>
 							</div>	
-							<div class="col-sm-6 col-md-6">
-								<div class="input-box">
-									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Company Name') }}</label>
-										<input type="text" class="form-control @error('company') is-danger @enderror" name="company" value="{{ auth()->user()->company }}">
-										@error('company')
-											<p class="text-danger">{{ $errors->first('company') }}</p>
-										@enderror
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-6">
-								<div class="input-box">
-									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Company Website') }}</label>
-										<input type="text" class="form-control @error('website') is-danger @enderror" name="website" value="{{ auth()->user()->website }}">
-										@error('website')
-											<p class="text-danger">{{ $errors->first('website') }}</p>
-										@enderror
-									</div>
-								</div>
-							</div>
 							<div class="col-md-12">
 								<div class="input-box">
 									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Address Line') }}</label>
+										<label class="form-label fs-12">{{ __('Địa chỉ') }}</label>
 										<input type="text" class="form-control @error('address') is-danger @enderror" name="address" value="{{ auth()->user()->address }}">
 										@error('address')
 											<p class="text-danger">{{ $errors->first('address') }}</p>
@@ -145,33 +120,11 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-md-4">
-								<div class="input-box">
-									<div class="form-group">
-										<label class="form-label fs-12">{{ __('City') }}</label>
-										<input type="text" class="form-control @error('city') is-danger @enderror" name="city" value="{{ auth()->user()->city }}">
-										@error('city')
-											<p class="text-danger">{{ $errors->first('city') }}</p>
-										@enderror
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="input-box">
-									<div class="form-group">
-										<label class="form-label fs-12">{{ __('Postal Code') }}</label>
-										<input type="text" class="form-control @error('postal_code') is-danger @enderror" name="postal_code" value="{{ auth()->user()->postal_code }}">
-										@error('postal_code')
-											<p class="text-danger">{{ $errors->first('postal_code') }}</p>
-										@enderror
-									</div>
-								</div>
-							</div>
 							
 						</div>
 						<div class="card-footer border-0 text-right mb-2 pr-0">
-							<a href="" class="btn btn-cancel mr-2">{{ __('Cancel') }}</a>
-							<button type="submit" class="btn btn-primary">{{ __('Update') }}</button>							
+							<a href="" class="btn btn-cancel mr-2">{{ __('Quay lại') }}</a>
+							<button type="submit" class="btn btn-primary">{{ __('Cập nhật') }}</button>							
 						</div>
 					</form>
 				</div>				

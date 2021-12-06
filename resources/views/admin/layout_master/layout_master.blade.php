@@ -26,9 +26,15 @@
   <link rel="stylesheet" href="{{ asset('admin_assets/plugins/daterangepicker/daterangepicker.css') }} ">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('admin_assets/plugins/summernote/summernote-bs4.min.css') }} ">
+  <style>
+    hr {
+      color: #ffffff;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+  @auth
   <div class="wrapper">
 
     <!-- Preloader -->
@@ -44,10 +50,10 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{ route('home') }}" class="nav-link">Home</a>
+          <a href="{{ route('home') }}" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
+          <a href="#" class="nav-link">Liên hệ</a>
         </li>
       </ul>
 
@@ -85,7 +91,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <img src="{{ asset('admin_assets/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Brad Diesel
@@ -101,7 +107,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="{{ asset('admin_assets/dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -117,7 +123,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="{{ asset('admin_assets/dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -172,6 +178,7 @@
 
     <!-- Main Sidebar Container -->
     <div class="row">
+
       <div class="col-md-2">
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
           <!-- Brand Logo -->
@@ -189,6 +196,15 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 @auth
+                <li class="nav-header">BẢNG ĐIỀU KHIỂN QUẢN TRỊ</li>
+                <li class="nav-item" style="border-bottom: 1px solid #4b545c; padding-bottom: 10px;">
+                  <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
+                    <span class="side-menu__icon fa fa-th-large"></span>
+
+                    <span class="side-menu__label">BẢNG ĐIỀU KHIỂN</span>
+                  </a>
+                </li>
+                <li class="nav-header" style="padding-top: 10px;">BẢNG QUẢN TRỊ</li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
@@ -203,19 +219,19 @@
                     <li class="nav-item">
                       <a href="{{ route('admin.categories.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Categories</p>
+                        <p>Loại phòng</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{{ route('admin.rooms.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Rooms</p>
+                        <p>Phòng</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{{ route('admin.users.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Users</p>
+                        <p>Khách hàng</p>
                       </a>
                     </li>
                     <li class="nav-item">
@@ -239,7 +255,13 @@
                     <li class="nav-item">
                       <a href="{{ route('admin.comments.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Comment</p>
+                        <p>Bình luận</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Hỗ trợ</p>
                       </a>
                     </li>
                   </ul>
@@ -275,72 +297,9 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                      Forms
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="pages/forms/general.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>General Elements</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/forms/advanced.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Advanced Elements</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/forms/editors.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Editors</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/forms/validation.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Validation</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                      Tables
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="pages/tables/simple.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Simple Tables</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/tables/data.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>DataTables</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/tables/jsgrid.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>jsGrid</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+
                 @endauth
-                <li class="nav-header">USER PANEL</li>
+                <li class="nav-header">BẢNG ĐIỀU KHIỂN THÀNH VIÊN</li>
                 <li class="nav-item">
                   <a href="pages/calendar.html" class="nav-link">
                     <i class="nav-icon far fa-calendar-alt"></i>
@@ -351,55 +310,27 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/gallery.html" class="nav-link">
+                  <a href="{{ route('user.roomtype.index') }}" class="nav-link">
                     <i class="nav-icon far fa-image"></i>
                     <p>
-                      All view
+                      Tất cả loại phòng
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/kanban.html" class="nav-link">
+                  <a href="{{ route('user.support.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-columns"></i>
                     <p>
-                      Kanban Board
+                      Yêu cầu hỗ trợ
                     </p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon far fa-envelope"></i>
-                    <p>
-                      Mailbox
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="pages/mailbox/mailbox.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Inbox</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/mailbox/compose.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Compose</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/mailbox/read-mail.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Read</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
-                      My Profile setting
+                      Hồ sơ cá nhân
                       <i class="fas fa-angle-left right"></i>
                     </p>
                   </a>
@@ -407,13 +338,13 @@
                     <li class="nav-item">
                       <a href="{{ route('user.profile.index') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>My Profile</p>
+                        <p>Thông tin tài khoản</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="{{ route('user.profile.password.index') }}" class="nav-link">
+                      <a href="{{ route('user.password') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Change Password</p>
+                        <p>Đổi mật khẩu</p>
                       </a>
                     </li>
 
@@ -457,10 +388,13 @@
           <!-- /.sidebar -->
         </aside>
       </div>
-      <div class="col-md-10 main-header">
+
+      <div class="col-md-10">
         <div class="row">
           <div class="col-md-12" style="padding-left: 35px; padding-top: 15px;">
-            @yield('contents')
+            <aside>
+              @yield('contents')
+            </aside>
           </div>
         </div>
       </div>
@@ -468,7 +402,7 @@
 
     <!-- Content Wrapper. Contains page content -->
 
-    <footer class="main-footer">
+    <footer class="main-footer mt-3">
       <strong>Copyright &copy; 2014-2021 <a href="{{ route('admin') }}">AdminLTE.io</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
@@ -476,6 +410,7 @@
       </div>
     </footer>
   </div>
+  @endauth
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -519,7 +454,6 @@
   <script src="{{ asset('admin_assets/dist/js/demo.js') }} "></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="{{ asset('admin_assets/dist/js/pages/dashboard.js') }} "></script>
-  
   @yield('js')
 </body>
 

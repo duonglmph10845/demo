@@ -10,7 +10,7 @@
     @include('frontend.layouts.header')
     
     <!-- Blog Start -->
-    <div class="blog">
+    <div class="blog" style="margin: center;">
         <div class="container">
             <div class="section-header text-center">
                 <p>HOMESTAY Lodge Villa 20</p>
@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 @foreach ($ListRooms as $item)
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="blog-item">
                         <div class="blog-img">
                             <img src="{{ config('app.base_url') . $item->feature_image_path	 }}" alt="Image">

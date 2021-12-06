@@ -23,6 +23,7 @@
         <thead style="background-color: #383f45; max-width:100%;" class="table-dark" style="margin-top: 30px;">
         <tr>
                 <td>Id</td>
+                <td>Tên phòng</td>
                 <td>Ảnh sản phẩm</td>
                 <td>Chi tiết bình luận</td>
                 <td>Ngày bình luận</td>
@@ -30,17 +31,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $item)
+            @foreach ($data as $key => $item)
             <tr>
-                <td>{{ $item->id }}</td>
-                <td><img src="{{ $item->image }}" width="100px" height="100px" alt=""></td>
-                <td>{{ $item->noi_dung }}</td>
-                <td>{{ $item->ngay_bl }}</td>
+                <td>{{ $key + 1 }}</td>
+                <td>{{ $item->name }}</td>
+                <td><img src="{{ $item->feature_image_path }}" width="100px" height="100px" alt=""></td>
+                <td>{{ $item->content }}</td>
+                <td>{{ $item->created_at }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ route('comment_viw', [ 'product' => $item->product_id ])}}">Xem</a>
-                </td>
-                <td>
-                    <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Delete</button>
+                    <a class="btn btn-primary" href="{{ route('admin.comments.show', [ 'id' => $item->room_id ])}}">Xem</a>
+                 <button class="btn btn-danger" role="button" data-toggle="modal" data-target="#confirm_delete_{{ $item->id }}">Delete</button>
                     <div class="modal fade" id="confirm_delete_{{ $item->id }}" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <form action="{{ route('remove-comment', [ 'id' => $item->id ])}}" method="POST">
+                                    <form action="{{ route('admin.comments.delete', [ 'id' => $item->id_cmt ])}}" method="POST">
                                         @csrf
                                         <button tybe="submit" class="btn btn-danger">Xóa</button>
                                     </form>

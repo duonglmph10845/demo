@@ -4,6 +4,15 @@
 <head>
   <title>Document</title>
   @include('frontend.layouts.head')
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone" rel="stylesheet">
   <style>
     .form_group {
       top: 100px;
@@ -75,41 +84,38 @@
     <div class="detail">
       <div class="row">
         <div class="col-8">
-          <a href="">Home ></a> <a href="{{ $Room_detail->room_type }}">{{ $Room_detail->room_type }} ></a> <a href="">{{ $Room_detail->name }}</a>
+          <a href="">Home ></a> <a href="{{ $Room_detail->room_type }}">{{ $cate_name }} ></a> <a href="">{{ $Room_detail->name }}</a>
           <h2 class="price-detail">600.000 VND</h2>
           <div class="container">
             <div class="slide-detail">
-              <!-- <div class="mySlides">
-                <div class="numbertext">1 / 6</div>
-                <img src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 100%" />
-              </div> -->
+              <div class="mySlides">
+                <div class="numbertext">1 / {{ $tong }}</div>
+                <img src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 708px; height: 400px;" />
+              </div>
               @foreach ($Image_room as $key => $item)
               <div class="mySlides">
-                <div class="numbertext">{{ $key + 1 }} / 6</div>
-                <img src="{{ config('app.base_url') . $item->image	 }}" style="width: 100%" />
+                <div class="numbertext">{{ $key + 2 }} / {{ $tong }}</div>
+                <img src="{{ config('app.base_url') . $item->image	 }}" style="width: 100%; height: 400px;" />
               </div>
               @endforeach
-              <div class="mySlides">
-                <div class="numbertext">6 / 6</div>
-                <img src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 100%; height: ;" />
-              </div>
+
               <a class="prev" onclick="plusSlides(-1)">❮</a>
               <a class="next" onclick="plusSlides(1)">❯</a>
 
-              <div class="row ml-0 mr-0 mt-3">
-                <!-- <div class="col-2">
-                  <img class="demo cursor" src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 110px; height: 80px;" onclick=" currentSlide(1)" alt="Cinque Terre" />
-                </div> -->
-                @foreach ($Image_room as $key => $item)
-                <div class="col-2">
-                  <img class="demo cursor" src="{{ config('app.base_url') . $item->image	 }}" style="width: 110px; height: 80px;" onclick="currentSlide( {{ $key + 1 }} )" alt="Cinque Terre" />
-                </div>
-
-                @endforeach
-                <div class="col-2">
-                  <img class="demo cursor" src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 110px; height: 80px;" onclick=" currentSlide(6)" alt="Cinque Terre" />
-                </div>
-              </div>
+              
+                  <div class="row mr-0 mt-3">
+                    <div class="col-2">
+                      <img class="demo cursor" src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 110px; height: 80px;" onclick=" currentSlide(1)" alt="Cinque Terre" />
+                    </div>
+                    @foreach ($Image_room as $key => $item)
+                    <div class="col-2">
+                      <img class="demo cursor" src="{{ config('app.base_url') . $item->image	 }}" style="width: 110px; height: 80px;" onclick="currentSlide({{ $key + 2 }} )" alt="Cinque Terre" />
+                    </div>
+                    @endforeach
+                    <div class="col-2">
+                      <img class="demo cursor" src="{{ config('app.base_url') . $Room_detail->feature_image_path	 }}" style="width: 110px; height: 80px;" onclick=" currentSlide(7)" alt="Cinque Terre" />
+                    </div>
+                  </div>
             </div>
             <div class="mt-4">
               <nav>
@@ -128,10 +134,7 @@
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                   <div class="wattage">
-                    <p>Công suất 3 người lớn</p>
-                    <p>Nhà vệ sinh chung (gồm 2 tắm + 2 wc)</p>
-                    <p>Nhà vệ sinh chung (gồm 2 tắm + 2 wc)</p>
-                    <p>Nhà vệ sinh chung (gồm 2 tắm + 2 wc)</p>
+                    {!! $Room_detail->introduce_of_room !!}
                   </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -156,13 +159,8 @@
                       <div class="col-md-4">
                         @if(Auth::check())
                         @if(auth()->user()->id == $item->created_by)
-                        <form action="" method="POST">
+                        <form action="{{ route('remove-comment', [ 'id' => $item->cmt_id ])}}" method="POST">
                           @csrf
-
-                          <button type="submit" style="float:right;font-size:10px">Xoa</button>
-
-                          @elseif(auth()->user()->role == config('common.user.role.admin'))
-
                           <button type="submit" style="float:right;font-size:10px">Xoa</button>
                         </form>
                         @endif
@@ -193,74 +191,83 @@
                   <div class="">
                     <div class="row mr-0">
                       <div class="booking-form">
-                        <form>
+                        <form method="POST" action="">
+                          @csrf
+                          <input type="hidden" id="user_id" value="{{ Auth::id() }}">
+                          <input type="hidden" id="post_id" value="{{ $Room_detail->id }}">
                           <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <label for="exampleInputEmail1" class="form-label">
+                              Email address
+                            </label>
                             <input placeholder="Email address" type="email" class="form-control text" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <span class="text-danger" id="emailError"></span>
                           </div>
                           <div class="mb-3">
                             <label for="exampleName" class="form-label">Name</label>
                             <input placeholder="Name" type="text" class="form-control text" id="exampleName" aria-describedby="textHelp" />
+                            <span class="text-danger" id="nameError"></span>
                           </div>
                           <div class="mb-3">
                             <label for="examplePhone" class="form-label">Phone</label>
-                            <input placeholder="Phone" type="text" class="form-control text" id="exampleName" aria-describedby="textHelp" />
+                            <input placeholder="Phone" type="text" class="form-control text" id="examplePhone" aria-describedby="textHelp" />
+                            <span class="text-danger" id="phoneError"></span>
                           </div>
                           <div class="row mr-0">
-                            <div class="col-md-6 pr-0">
+                            <div class="col-md-12 pr-0">
                               <div class="form-group">
                                 <span class="form-label">Check In</span>
-                                <input class="form-control" type="date" required />
+                                <input class="form-control" type="date" id="checkIn" placeholder="" />
                               </div>
+                              <span class="text-danger" id="check_inError"></span>
                             </div>
-                            <div class="col-md-6 pr-0">
+                            <div class="col-md-12 pr-0">
                               <div class="form-group">
                                 <span class="form-label">Check Out</span>
-                                <input class="form-control" type="date" required />
+                                <input class="form-control" type="date" id="checkOut" placeholder="" />
+                                <span class="text-danger" id="check_outError"></span>
                               </div>
                             </div>
                           </div>
+
                           <div class="row mr-0">
-                            <div class="col-md-6 pr-0">
+                            <div class="col-md-12 pr-0">
                               <div class="form-group">
                                 <span class="form-label">Adults</span>
-                                <select class="form-control">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
+                                <select class="form-control" id="amount_of_people">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+
+
                                 </select>
                                 <span class="select-arrow"></span>
                               </div>
                             </div>
-                            <div class="col-md-6 pr-0">
-                              <div class="form-group">
-                                <span class="form-label">Children</span>
-                                <select class="form-control">
-                                  <option>0</option>
-                                  <option>1</option>
-                                  <option>2</option>
-                                </select>
-                                <span class="select-arrow"></span>
-                              </div>
-                            </div>
+
                           </div>
                           <div class="form-group">
-                            <span class="form-label">Room Type</span>
-                            <select class="form-control" required>
-                              <option value="" selected hidden>
-                                Select room type
-                              </option>
-                              <option>Private Room (1 to 2 People)</option>
-                              <option>Family Room (1 to 4 People)</option>
+                            <span class="form-label">Services</span>
+                            <select class="form-control" id="services" name="services" required multiple="multiple">
+
+                              @foreach($service as $service)
+                              <option value="{{$service->id}}">{{$service->name}}</option>
+                              @endforeach
                             </select>
                             <span class="select-arrow"></span>
                           </div>
+                          <div class="mb-3">
+                            <label for="examplePhone" class="form-label">Discount</label>
+                            <input placeholder="Discount" type="text" class="form-control text" id="exampleDiscount" aria-describedby="textHelp" />
+                          </div>
                           <div class="form-btn">
-                            <button class="submit-btn">
+                            <button id="bookings" class="submit-btn">
                               Đặt ngay
                             </button>
                           </div>
                         </form>
+
                       </div>
                     </div>
                   </div>
@@ -271,92 +278,38 @@
         </div>
       </div>
       <div class="list-product-same" id="list-product-same">
-                <div class="header-product">
-                    <h2 class="c-title">Có thể bạn cũng thích </h2>
-                </div>
-                <div class="row c-box_list">
-                    <div class="swiper-container  c-swipper-relate">
-                        <div class="swiper-wrapper row">
-                            @foreach ($splq as $item => $value)
-                            <div class="col-md-3 c-item swiper-slide">
-                                <a href="" title="Woven Trousers Pants" class="c-image">
-                                    <img src="{{ $value->	feature_image_path }}" alt="Woven Trousers Pants" class="img-fluid">
-                                </a>
-                                <h3 class="c-name" style="font-size: 16px; font-family: t-light; padding-top: 9px;">
-                                    <a style="color: #333333;text-decoration: none;background-color: transparent;-webkit-text-decoration-skip: objects;box-sizing: border-box;" href="" title="Woven Trousers Pants" class="name">
-                                        {{ $value->name }} </a>
-                                </h3>
-                                <p class="c-price" style="box-sizing: border-box; font-weight: bold;">
-                                    {{ number_format($value->price) }} VND
-                                </p>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-
+        <div class="header-product">
+          <h2 class="c-title">Có thể bạn cũng thích </h2>
+        </div>
+        <div class="row c-box_list">
+          <div class="swiper-container  c-swipper-relate">
+            <div class="swiper-wrapper row">
+              @foreach ($splq as $item => $value)
+              <div class="col-md-3 c-item swiper-slide">
+                <a href="" title="Woven Trousers Pants" class="c-image">
+                  <img src="{{ $value->	feature_image_path }}" alt="Woven Trousers Pants" class="img-fluid">
+                </a>
+                <h3 class="c-name" style="font-size: 16px; font-family: t-light; padding-top: 9px;">
+                  <a style="color: #333333;text-decoration: none;background-color: transparent;-webkit-text-decoration-skip: objects;box-sizing: border-box;" href="" title="Woven Trousers Pants" class="name">
+                    {{ $value->name }} </a>
+                </h3>
+                <p class="c-price" style="box-sizing: border-box; font-weight: bold;">
+                  {{ number_format($value->price) }} VND
+                </p>
+              </div>
+              @endforeach
             </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
   @include('frontend.layouts.footer')
   <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ asset('frontend_assets/lib/easing/easing.min.js') }}"></script>
-  <script src="{{ asset('frontend_assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('frontend_assets/lib/waypoints/waypoints.min.js') }}"></script>
-  <script src="{{ asset('frontend_assets/lib/counterup/counterup.min.js') }}"></script>
 
-  <!-- Contact Javascript File -->
-  <script src="{{ asset('frontend_assets/mail/jqBootstrapValidation.min.js') }}"></script>
-  <script src="{{ asset('frontend_assets/mail/contact.js') }}"></script>
 
-  <!-- Template Javascript -->
-  <script src="{{ asset('frontend_assets/js/main.js') }}"></script>
-  <!--jquery CDN-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!--slick slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="text/javascript">
-    $('.slider-team').slick({
-      dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      responsive: [{
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false
-          }
-        },
-
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false
-          }
-        }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
-      ]
-    });
-  </script>
   <!--michelsnik-->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>

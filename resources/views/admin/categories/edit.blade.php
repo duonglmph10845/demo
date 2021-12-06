@@ -1,10 +1,22 @@
 @extends('admin/layout_master/layout_master')
 @section('contents')
-<form action="{{ route('admin.categories.update') }}" method="POST">
+<!-- PAGE HEADER -->
+<div class="page-header mt-5-7">
+		<div class="page-leftheader">
+			<h4 class="page-title mb-0">{{ __('Cập nhật các loại phòng') }}</h4>
+			<ol class="breadcrumb mb-2">
+				<li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fa fa-magic mr-2 fs-12"></i>{{ __('Admin') }}</a></li>
+				<li class="breadcrumb-item" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Website') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}"> {{ __('Cập nhật các loại phòng') }}</a></li>
+			</ol>
+		</div>
+	</div>
+	<!-- END PAGE HEADER -->
+<form action="{{ route('admin.categories.update', ['id' => $data->id]) }}" method="POST">
     @csrf
     <div class="mt-3" style="color: 000000;">
         <label for="">Tên danh mục</label>
-        <input class="form-control" type="text" name="name">
+        <input class="form-control" type="text" name="name" value="{{ $data->name }}">
         @error('name')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -16,7 +28,7 @@
                     <i class="fa fa-picture-o"></i> Choose
                 </a>
             </span>
-            <input id="thumbnail" class="form-control" type="text" name="image" value="{{ old('image') }}">
+            <input id="thumbnail" class="form-control" type="text" name="image" value="{{ $data->image }}">
         </div>
         @error('image')
         <span class="text-danger">{{ $message }}</span>
@@ -24,12 +36,11 @@
     </div> <br>
     <div class="mt-3" style="color: 000000;">
         <label for="">Introduce</label>
-        <input class="form-control" type="text" name="introduce">
+        <input class="form-control" type="text" name="introduce" value="{{ $data->introduce }}">
         @error('introduce')
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
-    <textarea class="mt-3" id="my-editor" name="content" class="form-control">{!! old('content', 'test editor content') !!}</textarea>
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script>
         var options = {
@@ -40,7 +51,7 @@
         };
         CKEDITOR.replace('my-editor', options);
     </script>
-    <button class="mt-3 btn btn-primary">Thêm mới</button>
+    <button class="mt-3 btn btn-primary">Cập nhật</button>
 </form>
 @endsection
 @section('js')
